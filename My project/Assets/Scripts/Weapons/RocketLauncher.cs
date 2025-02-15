@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RocketLauncher : ProjectileWeapon
 {
-    float bobTime = 0.2f;
+    float bobTime = 0.3f;
 
     public RocketLauncher(GameObject projectile, GameObject viewport)
     {
@@ -34,16 +34,17 @@ public class RocketLauncher : ProjectileWeapon
     public IEnumerator Recoil(GameObject viewAnim, float waitTime)
     {
         Vector3 localPos = viewAnim.transform.localPosition;
-        float time = waitTime;
+        float time = 0;
 
-        while (time > 0)
+        while (time < waitTime)
         {
             // move by local forward
             float t = (time / waitTime); // [0 1]
+            t = Mathf.Pow(t, 6.0f);
 
-            Vector3 delta = new Vector3(0.0f, 0.0f, -1.0f) * Mathf.Lerp(0.05f, 0.0f, t);
-            viewAnim.transform.localPosition += delta;
-            time -= Time.deltaTime;
+            Vector3 delta = new Vector3(0.0f, 0.0f, -1.0f) * Mathf.Lerp(0.3f, 0.0f, t);
+            viewAnim.transform.localPosition = localPos + delta;
+            time += Time.deltaTime;
             yield return null;
         }
 
