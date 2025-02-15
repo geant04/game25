@@ -6,14 +6,12 @@ public class RocketLauncher : ProjectileWeapon
 {
     float bobTime = 0.3f;
 
-    public RocketLauncher(GameObject projectile, GameObject viewAnim)
+    public override void Initialize()
     {
+        Debug.Log("Initialize Rocket");
         ammo = 20;
         reloadTime = 0.4f;
-        this.projectile = projectile;
-        this.viewAnim = viewAnim;
-
-        localPos = viewAnim.transform.localPosition;
+        localPos = new Vector3(0, 0, 0.5f);
     }
 
     public override bool Attack(Vector3 origin, Vector3 dir)
@@ -60,7 +58,7 @@ public class RocketLauncher : ProjectileWeapon
         return true;
     }
 
-    public override void Update()
+    public override void GunUpdate()
     {
         reloadTimeLeft = Mathf.Max(0.0f, reloadTimeLeft - Time.deltaTime);
     }

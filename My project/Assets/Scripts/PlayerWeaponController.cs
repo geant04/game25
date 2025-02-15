@@ -17,7 +17,7 @@ public class PlayerWeaponController : MonoBehaviour
 
     private void Update()
     {
-        weapon = playerWeaponManager.weapon;
+        weapon = playerWeaponManager.weapon.GetComponent<Gun>();
 
         if (Input.GetKey(KeyCode.Mouse0))
         {
@@ -31,7 +31,7 @@ public class PlayerWeaponController : MonoBehaviour
         }
 
         Debug.DrawRay(originPoint.transform.position, originPoint.transform.forward, Color.cyan);
-        weapon.Update();
+        weapon.GunUpdate();
     }   
 }
 

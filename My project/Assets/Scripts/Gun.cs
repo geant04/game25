@@ -1,26 +1,38 @@
 using UnityEngine;
 
-public abstract class Gun
+public class Gun : MonoBehaviour
 {
-    public int maxAmmo;
-    public int ammo;
-    public float reloadTime;
-    public float cooldownTime;
-    public bool isActive = true;
-    public GameObject viewAnim;
-    public Vector3 localPos; // only assigned in Recoil! dangerous
+    public GameObject viewModel; // assign this in inspector, needed to change model
+
+    [HideInInspector] public int maxAmmo, ammo;
+    [HideInInspector] public float reloadTime, cooldownTime;
+    [HideInInspector] public bool isActive = true;
+    [HideInInspector] public GameObject viewAnim;
+    [HideInInspector] public Vector3 localPos;
 
     protected float reloadTimeLeft;
     protected float cooldownTimeLeft;
 
-    public abstract bool Attack(Vector3 origin, Vector3 dir);
-    public abstract void Animate(GameObject viewAnim, MonoBehaviour mono);
-    public abstract bool Reload();
-    public abstract void Update();
+    public virtual void Initialize() { }
+    public virtual bool Attack(Vector3 origin, Vector3 dir) 
+    {
+        return true;
+    }
+    public virtual void Animate(GameObject viewAnim, MonoBehaviour mono) {}
+    public virtual bool Reload() 
+    {
+        return false;
+    }
 
-    public void refillAmmo(int amt)
+    public virtual void GunUpdate() { }
+
+    public void RefillAmmo(int amt)
     {
         ammo = Mathf.Min(maxAmmo, amt + ammo);
+    }
+    public void SetOrigin(Vector3 origin)
+    {
+        localPos = origin;
     }
 }
 

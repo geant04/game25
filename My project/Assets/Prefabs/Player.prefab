@@ -496,6 +496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dad337d8494087b45aaecf47ac1867b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weapon: {fileID: 0}
   playerController: {fileID: 4551538823383746221}
   playerWeaponManager: {fileID: 4658087763043889856}
   originPoint: {fileID: 8840905676251217532}
@@ -530,10 +531,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f440f4796185c854d9fc001b32cb92f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectiles:
-  - {fileID: 7233332238351996326, guid: 201e22e056aa0874bbcd48e382d10a9b, type: 3}
-  - {fileID: 168372881843686526, guid: 014d4bebdf9128c4f8dd0d11e8261d8c, type: 3}
+  weapon: {fileID: 0}
   viewAnim: {fileID: 397607379076036652}
+  inventory:
+  - {fileID: 2109042961240099640, guid: 6a11f6b03353d9e4bacf9f636043971c, type: 3}
+  - {fileID: 4512009169309888298, guid: da2cf6934938e064a963ab6cc349c76b, type: 3}
 --- !u!1 &6950768202408367990
 GameObject:
   m_ObjectHideFlags: 0

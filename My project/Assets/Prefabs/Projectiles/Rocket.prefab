@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   despawnTime: 5
-  speed: 5
+  speed: 10
   sparkFX: {fileID: 168372881843686526, guid: 615e4d73b7843b94da0bef32f269d38e, type: 3}
 --- !u!54 &5779270533865942624
 Rigidbody:

@@ -4,27 +4,27 @@ using UnityEngine;
 
 public class PlayerWeaponManager : MonoBehaviour
 {
-    public Gun weapon;
-    public GameObject[] projectiles;
+    [HideInInspector] public GameObject weapon;
     public GameObject viewAnim;
-    public List<Gun> inventory;
+    public List<GameObject> inventory;
     
-    private int index = 1;
+    private int index = 0;
 
     void Awake()
     {
         // 0 is rocket
         // 1 is machine gun
-
-        inventory = new List<Gun>();
-        inventory.Add(new RocketLauncher(projectiles[0], viewAnim));
-        inventory.Add(new MachineGun(projectiles[1], viewAnim));
         weapon = inventory[index];
+
+        foreach(var weapon in inventory)
+        {
+            weapon.GetComponent<Gun>().Initialize();
+        }
     }
 
     void ResetView(int idx)
     {
-        viewAnim.transform.localPosition = inventory[index].localPos;
+        // viewAnim.transform.localPosition = inventory[index].GetComponent<Weapon>().localPos;
         // swap whatever models are stored at that point
     }
 

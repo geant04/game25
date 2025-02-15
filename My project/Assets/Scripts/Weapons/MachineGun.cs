@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class MachineGun : HitScanWeapon
 {
-    float bobTime = 0.2f;
-    GameObject spark;
+    public GameObject spark;
 
-    public MachineGun(GameObject spark, GameObject viewAnim)
+    public override void Initialize()
     {
+        Debug.Log("Initialize MachineGun");
         bulletDmg = 10;
         ammo = 500;
         reloadTime = 0.1f;
         cooldownTime = 0.2f;
-        this.spark = spark;
-        this.viewAnim = viewAnim;
-        localPos = viewAnim.transform.localPosition;
+        localPos = new Vector3(0, 0, 0.5f);
     }
 
     public override bool Attack(Vector3 origin, Vector3 dir)
@@ -75,7 +73,7 @@ public class MachineGun : HitScanWeapon
         return true;
     }
 
-    public override void Update()
+    public override void GunUpdate()
     {
         //cooldownTime = Mathf.Max(0.0f, cooldownTime - Time.deltaTime);
         reloadTimeLeft = Mathf.Max(0.0f, reloadTimeLeft - Time.deltaTime);
