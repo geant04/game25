@@ -4,28 +4,29 @@ using UnityEngine;
 
 public class PlayerWeaponManager : MonoBehaviour
 {
-    [HideInInspector] public GameObject weapon;
-    public GameObject viewAnim;
+    public GameObject viewModel;
     public List<GameObject> inventory;
-    
+    [HideInInspector] public GameObject weapon;
+
     private int index = 0;
 
     void Awake()
     {
-        // 0 is rocket
-        // 1 is machine gun
         weapon = inventory[index];
 
         foreach(var weapon in inventory)
         {
             weapon.GetComponent<Gun>().Initialize();
         }
+
+        ResetView();
     }
 
-    void ResetView(int idx)
+    void ResetView()
     {
-        // viewAnim.transform.localPosition = inventory[index].GetComponent<Weapon>().localPos;
-        // swap whatever models are stored at that point
+        Transform parent = viewModel.transform.parent;
+        Destroy(viewModel); // this is bad. This is bad. Don't do this. - Anthony
+        viewModel = Instantiate(weapon.GetComponent<Gun>().viewModel, parent);
     }
 
     // Update is called once per frame
@@ -41,9 +42,9 @@ public class PlayerWeaponManager : MonoBehaviour
             int temp = index;
             index = (index + idxChange) % inventory.Count;
             if (index < 0) index += inventory.Count;
-
+            
             weapon = inventory[index];
-            ResetView(temp);
+            ResetView();
         }
 
     }

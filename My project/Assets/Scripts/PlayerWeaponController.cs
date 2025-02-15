@@ -9,7 +9,6 @@ public class PlayerWeaponController : MonoBehaviour
     public PlayerController playerController;
     public PlayerWeaponManager playerWeaponManager;
     public GameObject originPoint;
-    public GameObject viewport;
     public GameObject viewAnim;
 
     void Awake()

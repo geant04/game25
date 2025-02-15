@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class RocketLauncher : ProjectileWeapon
 {
-    float bobTime = 0.3f;
-
     public override void Initialize()
     {
         Debug.Log("Initialize Rocket");
@@ -23,14 +21,14 @@ public class RocketLauncher : ProjectileWeapon
 
         ammo--;
         reloadTimeLeft = reloadTime;
-        Object.Instantiate(projectile, origin, Quaternion.LookRotation(dir));
+        Instantiate(projectile, origin, Quaternion.LookRotation(dir));
 
         return true;
     }
 
     public override void Animate(GameObject viewAnim, MonoBehaviour mono)
     {
-        mono.StartCoroutine(Recoil(viewAnim, bobTime));
+        mono.StartCoroutine(Recoil(viewAnim, reloadTime));
     }
 
     public IEnumerator Recoil(GameObject viewAnim, float waitTime)
