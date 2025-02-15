@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TestPost
-  m_Shader: {fileID: -6465566751694194690, guid: d6e7db9d5474ce642b5a6909476a63d1, type: 3}
+  m_Name: Pixel
+  m_Shader: {fileID: -6465566751694194690, guid: c34ca68a6cd4fa8439cbaf7668e058e3, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
