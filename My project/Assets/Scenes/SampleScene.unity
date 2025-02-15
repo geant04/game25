@@ -190,6 +190,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 139237918}
   originPoint: {fileID: 526937164}
+  viewport: {fileID: 727629910}
+  viewAnim: {fileID: 745228784}
   projectiles:
   - {fileID: 7233332238351996326, guid: 201e22e056aa0874bbcd48e382d10a9b, type: 3}
 --- !u!1 &468951761
@@ -321,12 +323,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 526937164}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.697}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 727629911}
+  m_Father: {fileID: 1806739890}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
@@ -586,7 +588,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 745228785}
-  - {fileID: 526937165}
   m_Father: {fileID: 1806739890}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &745228784
@@ -602,7 +603,7 @@ GameObject:
   - component: {fileID: 745228787}
   - component: {fileID: 745228786}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: ViewAnim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -617,7 +618,7 @@ Transform:
   m_GameObject: {fileID: 745228784}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.008, z: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
   m_LocalScale: {x: 0.15508564, y: 0.2014226, z: 0.38128}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -922,6 +923,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 526937165}
   - {fileID: 727629911}
   m_Father: {fileID: 963194228}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
