@@ -29,13 +29,18 @@ public class MachineGun : HitScanWeapon
         reloadTimeLeft = reloadTime;
 
         Enemy target = RayCastFire(origin, dir);
-        if (target != null)
-        {
-            target.TakeDamage(bulletDmg);
-        }
 
-        // sus code for hit
-        Object.Instantiate(spark, hit.point, Quaternion.LookRotation(dir));
+        if (hit.collider != null)
+        {
+            if (target != null)
+            {
+                target.TakeDamage(bulletDmg);
+            }
+
+            // sus code for hit
+            GameObject sp = Object.Instantiate(spark, hit.point, Quaternion.LookRotation(dir));
+            Object.Destroy(sp, 0.2f);
+        }
 
         return true;
     }
