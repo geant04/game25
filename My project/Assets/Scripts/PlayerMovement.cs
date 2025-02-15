@@ -46,7 +46,6 @@ public class PlayerMovement : MonoBehaviour
 
     bool isGrounded() {
         bool b = Physics.Raycast(feet.position, -Vector3.up, 0.25f);
-        Debug.Log(b);
         return b;
     }
 }

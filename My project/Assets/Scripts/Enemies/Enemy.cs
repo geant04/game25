@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int amt)
     {
         health = Mathf.Max(0, health - amt);
+        Debug.Log(transform.name + " wuz hit, hp: " + health);
         if (health <= 0)
         {
             Kill();

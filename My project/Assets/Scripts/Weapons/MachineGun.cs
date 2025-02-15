@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RocketLauncher : ProjectileWeapon
+public class MachineGun : HitScanWeapon
 {
-    float bobTime = 0.3f;
+    float bobTime = 0.2f;
+    GameObject spark;
 
-    public RocketLauncher(GameObject projectile, GameObject viewAnim)
+    public MachineGun(GameObject spark, GameObject viewAnim)
     {
-        ammo = 20;
-        reloadTime = 0.4f;
-        this.projectile = projectile;
+        bulletDmg = 10;
+        ammo = 500;
+        reloadTime = 0.1f;
+        cooldownTime = 0.2f;
+        this.spark = spark;
         this.viewAnim = viewAnim;
-
         localPos = viewAnim.transform.localPosition;
     }
 
@@ -25,14 +27,22 @@ public class RocketLauncher : ProjectileWeapon
 
         ammo--;
         reloadTimeLeft = reloadTime;
-        Object.Instantiate(projectile, origin, Quaternion.LookRotation(dir));
+
+        Enemy target = RayCastFire(origin, dir);
+        if (target != null)
+        {
+            target.TakeDamage(bulletDmg);
+        }
+
+        // sus code for hit
+        Object.Instantiate(spark, hit.point, Quaternion.LookRotation(dir));
 
         return true;
     }
 
     public override void Animate(GameObject viewAnim, MonoBehaviour mono)
     {
-        mono.StartCoroutine(Recoil(viewAnim, bobTime));
+        mono.StartCoroutine(Recoil(viewAnim, reloadTime));
     }
 
     public IEnumerator Recoil(GameObject viewAnim, float waitTime)
@@ -62,6 +72,7 @@ public class RocketLauncher : ProjectileWeapon
 
     public override void Update()
     {
+        //cooldownTime = Mathf.Max(0.0f, cooldownTime - Time.deltaTime);
         reloadTimeLeft = Mathf.Max(0.0f, reloadTimeLeft - Time.deltaTime);
     }
 }

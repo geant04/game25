@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7086654970113472966}
   - component: {fileID: -313010764365383844}
   m_Layer: 0
-  m_Name: Spark
+  m_Name: AOE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
