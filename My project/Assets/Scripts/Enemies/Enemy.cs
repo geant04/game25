@@ -95,8 +95,8 @@ public abstract class Enemy : MonoBehaviour
         {
             Vector3 randomPoint = transform.position + radius * UnityEngine.Random.insideUnitSphere;
             randomPoint.y = 0;
-            NavMeshHit hit;
-            if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas))
+            UnityEngine.AI.NavMeshHit hit;
+            if (UnityEngine.AI.NavMesh.SamplePosition(randomPoint, out hit, 1.0f, UnityEngine.AI.NavMesh.AllAreas))
             {
                 return hit.position;
             }
@@ -110,9 +110,9 @@ public abstract class Enemy : MonoBehaviour
         }
         for (int i = 0; i < 10; i++)
         {
-            NavMeshHit hit;
-            if (NavMesh.SamplePosition(playerRB.position + radius * UnityEngine.Random.insideUnitSphere,
-                 out hit, 1.0f, NavMesh.AllAreas))
+            UnityEngine.AI.NavMeshHit hit;
+            if (UnityEngine.AI.NavMesh.SamplePosition(playerRB.position + radius * UnityEngine.Random.insideUnitSphere,
+                 out hit, 1.0f, UnityEngine.AI.NavMesh.AllAreas))
             {
                 return hit.position;
             }

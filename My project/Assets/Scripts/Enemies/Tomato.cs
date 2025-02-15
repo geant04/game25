@@ -20,7 +20,7 @@ public class Tomato : Enemy
         isDead = false;
         findPlayer();
         agentSetup();
-        state = Idle;
+        state = EnemyState.Idle;
         goUp = true;
         destination.y = -100;
         reloadTimer = 3;
@@ -30,14 +30,14 @@ public class Tomato : Enemy
     void Update()
     {
 
-        if (state == Idle && (getDist() < 14 && lineOfSightCheck() || getDist() < 6) ) {
-            state = Random;
+        if (state == EnemyState.Idle && (getDist() < 14 && lineOfSightCheck() || getDist() < 6) ) {
+            state = EnemyState.Random;
         }
-        if (state == Random) {
+        if (state == EnemyState.Random) {
             if (getDist() > 14) {
-                state = Idle;
+                state = EnemyState.Idle;
             } else if (getDist() < 7) {
-                state = Still;
+                state = EnemyState.Still;
             }
 
             if (destination.y < -90 || hasReachedDest()) {
@@ -46,19 +46,19 @@ public class Tomato : Enemy
             }
             
         }
-        if (state == Still) {
+        if (state == EnemyState.Still) {
             if (getDist() > 7) {
-                state = Random;
+                state = EnemyState.Random;
             }
         }
 
-        if (state != Idle) {
+        if (state != EnemyState.Idle) {
             Shoot();
         }
 
 
 
-        if (state == Idle) return;
+        if (state == EnemyState.Idle) return;
 
         agent.nextPosition = transform.position;
 
@@ -70,16 +70,16 @@ public class Tomato : Enemy
 
     }
     void FixedUpdate() {
-        if (transform.y < playerRB.y) {
+        if (transform.position.y < playerRB.position.y) {
             goUp = true;
-        } else if (transform.y > 3 * playerRB.y) {
+        } else if (transform.position.y > 3 * playerRB.position.y) {
             goUp = false;
         }
         transform.position += (goUp ? 1 : -1)  * Time.fixedDeltaTime * Vector3.up;
         
 
-        if (state != Idle && state != Still) {
-            Vector3 v = enemy.agent.desiredVelocity;
+        if (state != EnemyState.Idle && state != EnemyState.Still) {
+            Vector3 v = agent.desiredVelocity;
             v.y = 0;
             transform.position += speed * Time.fixedDeltaTime * Vector3.Normalize(v);
         }
