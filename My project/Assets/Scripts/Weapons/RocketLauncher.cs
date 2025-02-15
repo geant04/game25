@@ -8,6 +8,7 @@ public class RocketLauncher : ProjectileWeapon
 
     public RocketLauncher(GameObject projectile, GameObject viewport)
     {
+        ammo = 5;
         reloadTime = 0.4f;
         this.projectile = projectile;
         this.viewport = viewport;
@@ -15,11 +16,12 @@ public class RocketLauncher : ProjectileWeapon
 
     public override bool Attack(Vector3 origin, Quaternion dir)
     {
-        if (reloadTimeLeft > 0)
+        if (reloadTimeLeft > 0 || ammo <= 0)
         {
             return false;
         }
 
+        ammo--;
         reloadTimeLeft = reloadTime;
         Object.Instantiate(projectile, origin, dir);
 
@@ -50,6 +52,11 @@ public class RocketLauncher : ProjectileWeapon
 
         viewAnim.transform.localPosition = localPos; // reset
         yield return null;
+    }
+
+    public override bool Reload()
+    {
+        return true;
     }
 
     public override void Update()

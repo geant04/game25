@@ -25,6 +25,11 @@ public class PlayerWeaponController : MonoBehaviour
             if (fired) weapon.Animate(viewAnim, this);
         }
 
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            weapon.Reload();
+        }
+
         weapon.Update();
     }
 }

@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 
     public float speed;
     public float gravity;
-    public Camera camera;
+    public GameObject view;
     public float sens;
     public float lookXLimit = 45.0f;
     float rotationX = 0;
@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
         {
             rotationX += -Input.GetAxis("Mouse Y") * sens;
             rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
-            camera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
+            view.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * sens, 0);
         }
     }
