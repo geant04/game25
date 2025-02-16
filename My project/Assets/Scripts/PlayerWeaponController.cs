@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+
+
 
 public class PlayerWeaponController : MonoBehaviour
 {
@@ -11,6 +14,7 @@ public class PlayerWeaponController : MonoBehaviour
     public GameObject originPoint;
     public GameObject viewAnim;
     public GameObject flash;
+    [SerializeField] private TextMeshProUGUI ammoText;
 
     void Awake()
     { }
@@ -35,6 +39,7 @@ public class PlayerWeaponController : MonoBehaviour
             weapon.Reload();
         }
 
+        ammoText.SetText($"{weapon.ammo} / {weapon.maxAmmo}");
         Debug.DrawRay(originPoint.transform.position, originPoint.transform.forward, Color.cyan);
         weapon.GunUpdate();
     }   
