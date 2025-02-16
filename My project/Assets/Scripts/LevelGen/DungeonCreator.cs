@@ -66,6 +66,7 @@ public class DungeonCreator : MonoBehaviour
     }
 
     private void CreateWall(GameObject wallParent, Vector3Int wallPosition, GameObject wall) {
+        int layer = 3;
         wallPosition += new Vector3Int(-dungeonWidth / 2, 0, -dungeonLength / 2);
         Instantiate(wall, wallPosition, Quaternion.identity, wallParent.transform);
     }

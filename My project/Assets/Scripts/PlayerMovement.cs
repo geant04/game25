@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private float moveFB, moveLR;
     private bool isDead;
 
-    [SerializeField] private Text title;
+    [SerializeField] private TextMeshProUGUI title;
 
     // Start is called before the first frame update
     void Start()
@@ -44,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
                 gravity += jumpSpeed;
             }
         }
-        title.text = "Health: " + health;
+        title.SetText($"{health}");
     }
 
     void FixedUpdate() {
