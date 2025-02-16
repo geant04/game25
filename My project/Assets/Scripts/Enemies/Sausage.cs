@@ -17,7 +17,7 @@ public class Sausage : Enemy
     void Start()
     {
         cTurnSpeed = 0;
-        health = 200;
+        health = 3000;
         speed = 4f;
         turnSpeed = 160;
         isDead = false;
