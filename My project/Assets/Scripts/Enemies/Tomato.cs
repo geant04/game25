@@ -51,7 +51,11 @@ public class Tomato : Enemy
             }
             
             if (destination.y < -90 || hasReachedDest()) {
-                destination = getRandomPoint(5);
+                if (Random.value > 0.5f) {
+                    destination = getRandomPoint(5);
+                } else {
+                    destination = getPlayerPoint(1f);
+                }
                 agent.SetDestination(destination);
             }
         }
