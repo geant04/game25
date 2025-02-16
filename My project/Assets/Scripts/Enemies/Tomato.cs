@@ -16,7 +16,6 @@ public class Tomato : Enemy
     // Start is called before the first frame update
     void Start()
     {
-        cSpeed = 0;
         cTurnSpeed = 0;
         health = 200;
         speed = 2.5f;
@@ -33,25 +32,25 @@ public class Tomato : Enemy
     // Update is called once per frame
     void Update()
     {
-        if (state == EnemyState.Idle && (getDist() < 14 && lineOfSightCheck() || getDist() < 6) ) {
-            state = EnemyState.Random;
+        if (state == EnemyState.Idle && (getDist() < 17 && lineOfSightCheck() || getDist() < 6) ) {
+            state = EnemyState.Still;
         }
-        if (state == EnemyState.Random) {
-            if (getDist() > 14) {
+        if (state == EnemyState.Still) {
+            if (getDist() > 18) {
                 state = EnemyState.Idle;
-            } else if (getDist() < 7) {
-                state = EnemyState.Still;
-            }
-
-            if (destination.y < -90 || hasReachedDest()) {
-                destination = getRandomPoint(5);
-                agent.SetDestination(destination);
+            } else if (getDist() < 8) {
+                state = EnemyState.Random;
             }
             
         }
-        if (state == EnemyState.Still) {
+        if (state == EnemyState.Random) {
             if (getDist() > 7) {
-                state = EnemyState.Random;
+                state = EnemyState.Still;
+            }
+            
+            if (destination.y < -90 || hasReachedDest()) {
+                destination = getRandomPoint(5);
+                agent.SetDestination(destination);
             }
         }
 
