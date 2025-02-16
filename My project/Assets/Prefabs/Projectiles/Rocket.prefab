@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9164302422350923794}
   - component: {fileID: -8154395967360723816}
   - component: {fileID: 5779270533865942624}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   despawnTime: 5
+  ignoreSpeed: 0
   speed: 10
   sparkFX: {fileID: 168372881843686526, guid: 615e4d73b7843b94da0bef32f269d38e, type: 3}
 --- !u!54 &5779270533865942624

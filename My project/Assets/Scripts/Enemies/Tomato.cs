@@ -16,7 +16,8 @@ public class Tomato : Enemy
         cSpeed = 0;
         cTurnSpeed = 0;
         health = 200;
-        speed = 1;
+        speed = 2.5f;
+        turnSpeed = 140;
         isDead = false;
         findPlayer();
         agentSetup();
@@ -63,7 +64,7 @@ public class Tomato : Enemy
 
         agent.nextPosition = transform.position;
 
-        turnTowardsVector(Vector3.Normalize(playerRB.position - transform.position));
+        turnTowardsVector(playerRB.position - transform.position);
 
         transform.eulerAngles += cTurnSpeed * Time.deltaTime * Vector3.up;
 
@@ -76,7 +77,7 @@ public class Tomato : Enemy
         } else if (transform.position.y > 4 + playerRB.position.y) {
             goUp = false;
         }
-        //transform.position += (goUp ? 1 : -1)  * Time.fixedDeltaTime * Vector3.up;
+        transform.position += (goUp ? 0.9f : -0.9f)  * Time.fixedDeltaTime * Vector3.up;
         
 
         if (state != EnemyState.Idle && state != EnemyState.Still) {
@@ -91,9 +92,9 @@ public class Tomato : Enemy
 
         GameObject bullet = Object.Instantiate(BulletPrefab, gunShotPos.position, Quaternion.identity);
         bullet.GetComponent<Rigidbody>().velocity = Quaternion.AngleAxis(10 * (Random.value - 0.5f), Vector3.up)
-         * (Vector3.Normalize(playerRB.position - transform.position) * 3);
+         * (Vector3.Normalize(playerRB.position - transform.position) * 7);
         bullet.transform.rotation = Quaternion.LookRotation(bullet.GetComponent<Rigidbody>().velocity);
 
-        reloadTimer = 4;
+        reloadTimer = 2;
     }
 }

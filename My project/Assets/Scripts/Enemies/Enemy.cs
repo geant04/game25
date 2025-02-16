@@ -66,6 +66,7 @@ public abstract class Enemy : MonoBehaviour
 
     protected void turnTowardsVector(Vector3 v) {
         v.y = 0;
+        v = Vector3.Normalize(v);
         float dir = Vector3.Dot(-transform.right, v);
         if (dir > 0.02f) {
             if (cTurnSpeed > 0) {
