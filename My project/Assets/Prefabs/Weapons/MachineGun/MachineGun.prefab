@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   viewModel: {fileID: 8050026056838111781, guid: c3257730c2df6a5449e1d59b51cf7ab0, type: 3}
   maxAmmo: 0
-  ammo: 402
+  ammo: 446
   reloadTime: 0.1
   cooldownTime: 0.2
   isActive: 1
@@ -54,3 +54,6 @@ MonoBehaviour:
   localPos: {x: 0, y: 0, z: 0.5}
   bulletDmg: 10
   spark: {fileID: 168372881843686526, guid: 014d4bebdf9128c4f8dd0d11e8261d8c, type: 3}
+  tracer: {fileID: 5285082011469132393, guid: 820ba141b0b4a144e9c9ae8ff6d53c50, type: 3}
+  bundle: {fileID: 0}
+  flash: {fileID: 0}
