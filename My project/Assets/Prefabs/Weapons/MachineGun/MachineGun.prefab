@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a2be9443e84045439133ac38feaff77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewModel: {fileID: 3441971214668025769, guid: 6fa63cbf07c9d4e489cda20a3f55a218, type: 3}
+  viewModel: {fileID: 8050026056838111781, guid: c3257730c2df6a5449e1d59b51cf7ab0, type: 3}
   maxAmmo: 0
-  ammo: 439
+  ammo: 402
   reloadTime: 0.1
   cooldownTime: 0.2
   isActive: 1

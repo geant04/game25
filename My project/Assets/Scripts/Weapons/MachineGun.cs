@@ -50,15 +50,29 @@ public class MachineGun : HitScanWeapon
 
     public IEnumerator Recoil(GameObject viewAnim, float waitTime)
     {
+        GameObject bundle = GameObject.Find("Bundle"); // this is so ass
+        Transform rot = null;
+        if (bundle)
+        {
+            rot = bundle.transform;
+        }
+
         float time = 0;
 
         while (time < waitTime)
         {
             // move by local forward
             float t = (time / waitTime); // [0 1]
-            t = Mathf.Pow(t, 6.0f);
 
-            Vector3 delta = new Vector3(0.0f, 0.0f, -1.0f) * Mathf.Lerp(0.3f, 0.0f, t);
+            if (bundle)
+            {
+                float dr = Mathf.Lerp(0.0f, 45.0f, Mathf.Pow(t, 3.0f));
+                rot.Rotate(Vector3.forward, dr);
+                bundle.transform.localRotation = rot.localRotation;
+            }
+
+            t = Mathf.Pow(t, 6.0f);
+            Vector3 delta = new Vector3(0.0f, 0.0f, -1.0f) * Mathf.Lerp(0.01f, 0.0f, t);
             viewAnim.transform.localPosition = localPos + delta;
             time += Time.deltaTime;
             yield return null;
