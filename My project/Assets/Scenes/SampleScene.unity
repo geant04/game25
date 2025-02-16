@@ -455,6 +455,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 551084130474929575, guid: e0b68e33bdedca34a83d89e86484f32a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2143103795035008935, guid: e0b68e33bdedca34a83d89e86484f32a, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -462,10 +466,6 @@ PrefabInstance:
     - target: {fileID: 2221363839684275768, guid: e0b68e33bdedca34a83d89e86484f32a, type: 3}
       propertyPath: m_LocalPosition.y
       value: -1.09
-      objectReference: {fileID: 0}
-    - target: {fileID: 4371990777491331548, guid: e0b68e33bdedca34a83d89e86484f32a, type: 3}
-      propertyPath: m_Constraints
-      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 4551538823383746221, guid: e0b68e33bdedca34a83d89e86484f32a, type: 3}
       propertyPath: m_Enabled
@@ -475,7 +475,7 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4964172436828858206, guid: e0b68e33bdedca34a83d89e86484f32a, type: 3}
+    - target: {fileID: 4663789247701843580, guid: e0b68e33bdedca34a83d89e86484f32a, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
