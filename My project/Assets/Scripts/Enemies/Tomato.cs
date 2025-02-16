@@ -6,6 +6,9 @@ public class Tomato : Enemy
 {
     public GameObject BulletPrefab;
     public Transform gunShotPos;
+
+    public float bulletSpeed = 7;
+    public float reload = 2;
     private bool goUp;
 
     private float reloadTimer;
@@ -30,8 +33,6 @@ public class Tomato : Enemy
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("dist:" + getDist());
-        Debug.Log("line:" + lineOfSightCheck());
         if (state == EnemyState.Idle && (getDist() < 14 && lineOfSightCheck() || getDist() < 6) ) {
             state = EnemyState.Random;
         }
@@ -92,9 +93,9 @@ public class Tomato : Enemy
 
         GameObject bullet = Object.Instantiate(BulletPrefab, gunShotPos.position, Quaternion.identity);
         bullet.GetComponent<Rigidbody>().velocity = Quaternion.AngleAxis(10 * (Random.value - 0.5f), Vector3.up)
-         * (Vector3.Normalize(playerRB.position - transform.position) * 7);
+         * (Vector3.Normalize(playerRB.position - transform.position) * bulletSpeed);
         bullet.transform.rotation = Quaternion.LookRotation(bullet.GetComponent<Rigidbody>().velocity);
 
-        reloadTimer = 2;
+        reloadTimer = reload;
     }
 }

@@ -14,13 +14,21 @@ public class RocketAOE : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapSphere(center, radius);
         foreach (var hitCollider in hitColliders)
         {
-            if (hitCollider.gameObject.TryGetComponent<Enemy>(out Enemy d)) // hit a player
+            if (hitCollider.gameObject.TryGetComponent<Enemy>(out Enemy d)) // hit an enemy
             {
                 Vector3 hitPos = hitCollider.transform.position;
                 float power = Vector3.Distance(hitPos, center) / radius;
 
                 d.TakeDamage((int)(maxBlastDamage * (1.1f - power)));
                 Debug.Log(d.health);
+            }
+
+            else if (hitCollider.gameObject.TryGetComponent<PlayerMovement>(out PlayerMovement p)) // hit a player
+            {
+                Vector3 hitPos = hitCollider.transform.position;
+                float power = Vector3.Distance(hitPos, center) / radius;
+
+                p.TakeDamage(1);
             }
         }
 
