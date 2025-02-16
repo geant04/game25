@@ -29,6 +29,7 @@ public class Gun : MonoBehaviour
     public void RefillAmmo(int amt)
     {
         ammo = Mathf.Min(maxAmmo, amt + ammo);
+        Debug.Log("Refilled: " + ammo);
     }
     public void SetOrigin(Vector3 origin)
     {

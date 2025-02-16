@@ -11,7 +11,8 @@ public class MachineGun : HitScanWeapon
     {
         Debug.Log("Initialize MachineGun");
         bulletDmg = 10;
-        ammo = 500;
+        maxAmmo = 500;
+        ammo = maxAmmo;
         reloadTime = 0.1f;
         cooldownTime = 0.2f;
         localPos = new Vector3(0, 0, 0.5f);

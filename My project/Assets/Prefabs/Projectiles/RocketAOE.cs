@@ -20,7 +20,6 @@ public class RocketAOE : MonoBehaviour
                 float power = Vector3.Distance(hitPos, center) / radius;
 
                 d.TakeDamage((int)(maxBlastDamage * (1.1f - power)));
-                Debug.Log(d.health);
             }
 
             else if (hitCollider.gameObject.TryGetComponent<PlayerMovement>(out PlayerMovement p)) // hit a player
