@@ -16,7 +16,15 @@ public class Rocket : MonoBehaviour
     {
         if (collision.transform.tag == "Player") return;
 
-        GameObject vfx = Instantiate(sparkFX, transform.position, Quaternion.LookRotation(collision.transform.forward));
+        if (transform.childCount > 0) {
+            if (transform.GetChild(0).gameObject.TryGetComponent<ParticleSystem>(out ParticleSystem ps)) {
+                ps.Stop();
+            }
+            Destroy(transform.GetChild(0).gameObject, 3);
+            transform.GetChild(0).parent = null;
+        }
+
+        GameObject vfx = Instantiate(sparkFX, transform.position + 0.5f * transform.forward, Quaternion.LookRotation(collision.transform.forward));
         Destroy(vfx, 1.0f);
         Destroy(gameObject);
     }

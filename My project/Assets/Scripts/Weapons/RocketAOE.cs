@@ -31,12 +31,24 @@ public class RocketAOE : MonoBehaviour
             }
         }
 
-        Destroy(this, 0.1f);
     }
 
     void Start()
     {
         radius = transform.localScale.x;
+        StartCoroutine(scaleChange());
         ExplosionDamage(transform.position, radius);
+    }
+    private IEnumerator scaleChange() {
+        float timer = 0;
+
+        while (timer < 0.25f) {
+            timer += Time.deltaTime;
+            Vector3 scaleChange = Vector3.Lerp(new Vector3(18, 18, 18), Vector3.zero, timer / 0.25f);
+            transform.localScale += Time.deltaTime * scaleChange;
+            yield return null;
+        }
+
+        Destroy(this, 0.05f);
     }
 }
