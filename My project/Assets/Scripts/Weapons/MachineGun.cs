@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class MachineGun : HitScanWeapon
 {
-    public GameObject spark;
-    public GameObject bundle;
-    public GameObject flash;
+    public GameObject spark, tracer;
+    [HideInInspector] public GameObject bundle, flash;
 
     public override void Initialize()
     {
@@ -16,6 +15,7 @@ public class MachineGun : HitScanWeapon
         reloadTime = 0.1f;
         cooldownTime = 0.2f;
         localPos = new Vector3(0, 0, 0.5f);
+        laserLine = GetComponent<LineRenderer>();
     }
 
     public override bool Attack(Vector3 origin, Vector3 dir)
@@ -29,6 +29,12 @@ public class MachineGun : HitScanWeapon
         reloadTimeLeft = reloadTime;
 
         Enemy target = RayCastFire(origin, dir);
+
+        GameObject trace = Instantiate(tracer);
+        float mag = Mathf.Max(Vector3.Distance(hit.point, origin), 40.0f);
+        trace.GetComponent<LineRenderer>().SetPosition(0, origin);
+        trace.GetComponent<LineRenderer>().SetPosition(1, origin + mag * dir);
+        Destroy(trace, 0.2f);
 
         if (hit.collider != null)
         {

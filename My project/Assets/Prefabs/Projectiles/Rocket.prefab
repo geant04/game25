@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 22d9dd2279b51da41aab6ae33833b86c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   despawnTime: 5
   ignoreSpeed: 0
-  speed: 10
+  speed: 15
   sparkFX: {fileID: 168372881843686526, guid: 615e4d73b7843b94da0bef32f269d38e, type: 3}
 --- !u!54 &5779270533865942624
 Rigidbody:
