@@ -94,6 +94,11 @@ public class Sausage : Enemy
     private void Shoot() {
         if (reloadTimer > 0.1f) return;
 
+        if (!lineOfSightCheck()) {
+            reloadTimer = 1;
+            return;
+        }
+
         GameObject bullet = Object.Instantiate(BulletPrefab, gunShotPos.position, Quaternion.identity);
         bullet.GetComponent<Rigidbody>().velocity = Quaternion.AngleAxis(10 * (Random.value - 0.5f), Vector3.up)
          * (Vector3.Normalize(playerRB.position - transform.position) * bulletSpeed);
