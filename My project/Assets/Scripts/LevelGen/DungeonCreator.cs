@@ -18,6 +18,11 @@ public class DungeonCreator : MonoBehaviour
     public float roomTopCornerModifier;
     [Range(0.0f, 2.0f)]
     public int roomOffset;
+    GameObject wallVertical, wallHorizontal;
+    List<Vector3Int> possibleDoorVerticalPosition;
+    List<Vector3Int> possibleDoorHorizontalPosition;
+    List<Vector3Int> possibleWallHorizontalPosition;
+    List<Vector3Int> possibleWallVerticalPosition;
 
     public Material material;
 
