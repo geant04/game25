@@ -38,6 +38,6 @@ Material:
     m_Ints: []
     m_Floats:
     - _BlurDistance: 7.87
-    - _ShadowThreshold: 8.95
+    - _ShadowThreshold: 21.89
     m_Colors: []
   m_BuildTextureStacks: []
