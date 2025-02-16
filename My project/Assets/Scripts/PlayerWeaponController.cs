@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-
-
 public class PlayerWeaponController : MonoBehaviour
 {
     // TO DO: if you want to abstract this further, just make it base class inherit from a weapon class
@@ -15,9 +13,6 @@ public class PlayerWeaponController : MonoBehaviour
     public GameObject viewAnim;
     public GameObject flash;
     [SerializeField] private TextMeshProUGUI ammoText;
-
-    void Awake()
-    { }
 
     private void Update()
     {
@@ -34,12 +29,16 @@ public class PlayerWeaponController : MonoBehaviour
                 Destroy(fx, 0.1f); // do a pool system honestly
             }
         }
-            if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             weapon.Reload();
         }
 
-        ammoText.SetText($"{weapon.ammo} / {weapon.maxAmmo}");
+        if (ammoText)
+        {
+            ammoText.SetText($"{weapon.ammo} / {weapon.maxAmmo}");
+        }
+
         Debug.DrawRay(originPoint.transform.position, originPoint.transform.forward, Color.cyan);
         weapon.GunUpdate();
     }   

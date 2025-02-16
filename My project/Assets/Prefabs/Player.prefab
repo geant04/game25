@@ -374,6 +374,7 @@ MonoBehaviour:
   originPoint: {fileID: 8840905676251217532}
   viewAnim: {fileID: 397607379076036652}
   flash: {fileID: 5932140238969974636, guid: 2a9760e549517694d91ff686dd57fec3, type: 3}
+  ammoText: {fileID: 0}
 --- !u!114 &7970841881368488037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,7 +392,6 @@ MonoBehaviour:
   feet: {fileID: 2221363839684275768}
   jumpSpeed: 4
   moveSpeed: 2.7
-  isMoving: 0
   gravity: 0
   camera: {fileID: 3519361649266563740}
   camTilt: 0
@@ -434,7 +434,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 13e6ea41268fb2147b5c8156eaa78cab, type: 2}
+  - {fileID: 2100000, guid: 22c9ed3cfbfa61646b3e66b6d890a57e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -512,7 +512,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!1 &6950768202408367990
 GameObject:

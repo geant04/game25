@@ -70,10 +70,11 @@ public class PlayerMovement : MonoBehaviour
             if (trigInput > 2 * 3.141592f) trigInput = 0.03f;
             camera.transform.position = new Vector3(camera.transform.position.x + 0.000001f, cameraY - maxRaise * Mathf.Cos(trigInput), camera.transform.position.z - 0.00000001f);
         }
-        
-        
 
-        title.SetText($"{health}");
+        if (title)
+        {
+            title.SetText($"{health}");
+        }
     }
 
     void FixedUpdate() {
