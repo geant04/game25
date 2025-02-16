@@ -78,6 +78,7 @@ GameObject:
   - component: {fileID: 1302302497163410967}
   - component: {fileID: 1539269141351155986}
   - component: {fileID: 7514285259050038905}
+  - component: {fileID: 5887519235581619711}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -199,6 +200,33 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &5887519235581619711
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054100807804596200}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1538820998373946257
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,7 +486,6 @@ MonoBehaviour:
   playerController: {fileID: 4551538823383746221}
   playerWeaponManager: {fileID: 4658087763043889856}
   originPoint: {fileID: 8840905676251217532}
-  viewport: {fileID: 6950768202408367990}
   viewAnim: {fileID: 397607379076036652}
 --- !u!114 &7970841881368488037
 MonoBehaviour:
@@ -472,6 +499,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78e18cebf4697a048bb84eef6c209874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  myRB: {fileID: 5887519235581619711}
   feet: {fileID: 2221363839684275768}
   jumpSpeed: 4
   moveSpeed: 2.7

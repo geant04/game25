@@ -29,7 +29,8 @@ public class Tomato : Enemy
     // Update is called once per frame
     void Update()
     {
-
+        Debug.Log("dist:" + getDist());
+        Debug.Log("line:" + lineOfSightCheck());
         if (state == EnemyState.Idle && (getDist() < 14 && lineOfSightCheck() || getDist() < 6) ) {
             state = EnemyState.Random;
         }
@@ -72,10 +73,10 @@ public class Tomato : Enemy
     void FixedUpdate() {
         if (transform.position.y < playerRB.position.y) {
             goUp = true;
-        } else if (transform.position.y > 3 * playerRB.position.y) {
+        } else if (transform.position.y > 4 + playerRB.position.y) {
             goUp = false;
         }
-        transform.position += (goUp ? 1 : -1)  * Time.fixedDeltaTime * Vector3.up;
+        //transform.position += (goUp ? 1 : -1)  * Time.fixedDeltaTime * Vector3.up;
         
 
         if (state != EnemyState.Idle && state != EnemyState.Still) {

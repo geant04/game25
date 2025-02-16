@@ -6,6 +6,7 @@ public class Rocket : MonoBehaviour
 {
     // velocity shouldn't change
     public float despawnTime;
+    public bool ignoreSpeed;
     public float speed;
     public GameObject sparkFX;
 
@@ -27,6 +28,7 @@ public class Rocket : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (ignoreSpeed) return;
         transform.position += dir * speed * Time.deltaTime;
     }
 }

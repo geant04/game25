@@ -49,8 +49,9 @@ public abstract class Enemy : MonoBehaviour
         if (player == null) {
             Debug.Log("Could not find player");
         } else {
-            playerRB = player.GetComponent<Rigidbody>();
+            
             playerScript = player.GetComponent<PlayerMovement>();
+            playerRB = playerScript.myRB;
         }
     }
     protected float getDist() {

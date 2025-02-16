@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public int health;
+    public Rigidbody myRB;
     public Transform feet;
     public float jumpSpeed, moveSpeed;
     public bool isMoving;
