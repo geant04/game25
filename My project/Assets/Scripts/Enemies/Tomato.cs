@@ -10,6 +10,7 @@ public class Tomato : Enemy
     public float bulletSpeed = 7;
     public float reload = 2;
     private bool goUp;
+    private float verticalSpeed;
 
     private float reloadTimer;
 
@@ -27,6 +28,7 @@ public class Tomato : Enemy
         goUp = true;
         destination.y = -100;
         reloadTimer = 3;
+        verticalSpeed = 0.7f + 0.3f * Random.value;
     }
 
     // Update is called once per frame
@@ -36,7 +38,7 @@ public class Tomato : Enemy
             state = EnemyState.Still;
         }
         if (state == EnemyState.Still) {
-            if (getDist() > 18) {
+            if (getDist() > 22) {
                 state = EnemyState.Idle;
             } else if (getDist() < 8) {
                 state = EnemyState.Random;
@@ -44,7 +46,7 @@ public class Tomato : Enemy
             
         }
         if (state == EnemyState.Random) {
-            if (getDist() > 7) {
+            if (getDist() > 10) {
                 state = EnemyState.Still;
             }
             
@@ -77,7 +79,7 @@ public class Tomato : Enemy
         } else if (transform.position.y > 4 + playerRB.position.y) {
             goUp = false;
         }
-        transform.position += (goUp ? 0.9f : -0.9f)  * Time.fixedDeltaTime * Vector3.up;
+        transform.position += (goUp ? verticalSpeed : -verticalSpeed)  * Time.fixedDeltaTime * Vector3.up;
         
 
         if (state != EnemyState.Idle && state != EnemyState.Still) {
@@ -91,7 +93,7 @@ public class Tomato : Enemy
         if (reloadTimer > 0.1f) return;
 
         GameObject bullet = Object.Instantiate(BulletPrefab, gunShotPos.position, Quaternion.identity);
-        bullet.GetComponent<Rigidbody>().velocity = Quaternion.AngleAxis(10 * (Random.value - 0.5f), Vector3.up)
+        bullet.GetComponent<Rigidbody>().velocity = Quaternion.AngleAxis(16 * (Random.value - 0.5f), Vector3.up)
          * (Vector3.Normalize(playerRB.position - transform.position) * bulletSpeed);
         bullet.transform.rotation = Quaternion.LookRotation(bullet.GetComponent<Rigidbody>().velocity);
 

@@ -30,9 +30,9 @@ public class Mushroom : Enemy
             state = EnemyState.Random;
         }
         if (state == EnemyState.Random) {
-            if (getDist() > 18) {
+            if (getDist() > 22) {
                 state = EnemyState.Idle;
-            } else if (getDist() < 12) {
+            } else if (getDist() < 15) {
                 state = EnemyState.Chase;
             }
 
@@ -42,12 +42,12 @@ public class Mushroom : Enemy
             }
             
         } else if (state == EnemyState.Chase) {
-            if (getDist() > 7) {
+            if (getDist() > 16) {
                 state = EnemyState.Random;
             }
 
             if (destination.y < -90 || hasReachedDest() || waypointTimer < 0.1f) {
-                speed = 4f;
+                speed = 4.4f;
                 if (waypointTimer < 0.1f) {
                     waypointTimer = 5;
                 }
@@ -87,7 +87,7 @@ public class Mushroom : Enemy
     private void Attack() {
         if (reloadTimer > 0.1f) return;
 
-        if (getDist() < 1.8f) {
+        if (getDist() < 2.3f) {
             Debug.Log("about to slash");
             StartCoroutine(Slash());
             
@@ -101,10 +101,10 @@ public class Mushroom : Enemy
     private IEnumerator Slash() {
         //start slash animation here?
         yield return new WaitForSeconds(0.3f);
-        if (getDist() < 2f) {
+        if (getDist() < 2.7f) {
             Debug.Log("Player slashed");
             playerScript.TakeDamage(1);
-            freezeTimer = 0.24f;
+            freezeTimer = 0.3f;
         }
     }
 }
