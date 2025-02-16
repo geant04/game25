@@ -6,14 +6,14 @@ public abstract class Enemy : MonoBehaviour
 {
     public int health;
     public float speed, turnSpeed;
-    protected float cSpeed, cTurnSpeed;
+    protected float cTurnSpeed;
     public EnemyState state;
     protected bool isDead;
     protected GameObject player;
     protected Rigidbody playerRB;
     [HideInInspector] public Vector3 destination;
     [HideInInspector] public UnityEngine.AI.NavMeshAgent agent;
-    private PlayerMovement playerScript;
+    protected PlayerMovement playerScript;
 
     public void TakeDamage(int amt)
     {
@@ -100,7 +100,9 @@ public abstract class Enemy : MonoBehaviour
             UnityEngine.AI.NavMeshHit hit;
             if (UnityEngine.AI.NavMesh.SamplePosition(randomPoint, out hit, 1.0f, UnityEngine.AI.NavMesh.AllAreas))
             {
-                return hit.position;
+                if (checkDestinationReachable(hit.position)) {
+                    return hit.position;
+                }
             }
         }
         return Vector3.zero;
@@ -116,7 +118,9 @@ public abstract class Enemy : MonoBehaviour
             if (UnityEngine.AI.NavMesh.SamplePosition(playerRB.position + radius * UnityEngine.Random.insideUnitSphere,
                  out hit, 1.0f, UnityEngine.AI.NavMesh.AllAreas))
             {
-                return hit.position;
+                if (checkDestinationReachable(hit.position)) {
+                    return hit.position;
+                }
             }
         }
         return getRandomPoint(6);
@@ -134,6 +138,19 @@ public abstract class Enemy : MonoBehaviour
     protected bool hasReachedDest() {
         return Vector2.Distance(new Vector2(transform.position.x, transform.position.z),
                     new Vector2(destination.x, destination.z)) < 1;
+    }
+    protected bool checkDestinationReachable(Vector3 destination) {
+        var path = new UnityEngine.AI.NavMeshPath();
+        agent.CalculatePath(destination, path);
+        switch (path.status)
+        {
+            case UnityEngine.AI.NavMeshPathStatus.PathComplete:
+                return true;
+                break;
+            default:
+                return false;
+                break;
+        }
     }
 
 }
