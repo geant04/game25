@@ -10,10 +10,14 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody myRB;
     public Transform feet;
     public float jumpSpeed, moveSpeed;
-    public bool isMoving;
     public float gravity;
     private float moveFB, moveLR;
     private bool isDead;
+    
+    public GameObject camera;
+    public float camTilt, trigInput;
+    private float cameraY, maxTilt, maxRaise;
+
 
     [SerializeField] private TextMeshProUGUI title;
 
@@ -23,6 +27,9 @@ public class PlayerMovement : MonoBehaviour
         isDead = false;
         health = 2;
         moveFB = 0; moveLR = 0;
+        cameraY = camera.transform.position.y;
+        maxTilt = 9;
+        maxRaise = 0.03f;
     }
 
     // Update is called once per frame
@@ -30,7 +37,6 @@ public class PlayerMovement : MonoBehaviour
     {
         moveFB = Input.GetAxisRaw("Vertical") * moveSpeed;
         moveLR = Input.GetAxisRaw("Horizontal") * moveSpeed;
-        isMoving = moveFB != 0 || moveLR != 0;
 
         bool grounded = isGrounded();
 
@@ -45,6 +51,28 @@ public class PlayerMovement : MonoBehaviour
                 gravity += jumpSpeed;
             }
         }
+
+        //camera tilt
+        if (moveLR > 0.1f){
+            camTilt = Mathf.Min(camTilt + 15 * Time.deltaTime, maxTilt);
+        } else if (moveLR < -0.1f) {
+            camTilt = Mathf.Max(camTilt - 15 * Time.deltaTime, -maxTilt);
+        } else if (camTilt > 0) {
+            camTilt = Mathf.Max(camTilt - 15 * Time.deltaTime, 0);
+        } else if (camTilt < 0) {
+            camTilt = Mathf.Min(camTilt + 15 * Time.deltaTime, 0);
+        }
+        camera.transform.eulerAngles = new Vector3(camera.transform.eulerAngles.x - 0.000001f, camera.transform.eulerAngles.y - 0.00000001f, -camTilt);
+
+        //head bobbing
+        if (grounded && (moveFB != 0 || moveLR != 0 || trigInput > 0.1f)) {
+            trigInput += 9 * Time.deltaTime;
+            if (trigInput > 2 * 3.141592f) trigInput = 0.03f;
+            camera.transform.position = new Vector3(camera.transform.position.x + 0.000001f, cameraY - maxRaise * Mathf.Cos(trigInput), camera.transform.position.z - 0.00000001f);
+        }
+        
+        
+
         title.SetText($"{health}");
     }
 
