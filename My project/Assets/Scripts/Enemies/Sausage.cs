@@ -8,7 +8,7 @@ public class Sausage : Enemy
     public Transform gunShotPos;
 
     public float bulletSpeed = 12;
-    public float reload = 3.4f;
+    public float reload = 1.8f;
     public float meleeReload = 1;
 
     private float reloadTimer, waypointTimer, freezeTimer;
@@ -17,7 +17,7 @@ public class Sausage : Enemy
     void Start()
     {
         cTurnSpeed = 0;
-        health = 3000;
+        health = 320;
         speed = 4f;
         turnSpeed = 160;
         isDead = false;
@@ -37,7 +37,7 @@ public class Sausage : Enemy
         if (state == EnemyState.Random) {
             if (getDist() > 26) {
                 state = EnemyState.Idle;
-            } else if (getDist() < 12) {
+            } else if (getDist() < 7) {
                 state = EnemyState.Chase;
             }
             
@@ -48,7 +48,7 @@ public class Sausage : Enemy
             
         }
         if (state == EnemyState.Chase) {
-            if (getDist() > 14) {
+            if (getDist() > 9) {
                 state = EnemyState.Random;
             }
             
