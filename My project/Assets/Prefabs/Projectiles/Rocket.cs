@@ -14,6 +14,8 @@ public class Rocket : MonoBehaviour
     
     void OnCollisionEnter(Collision collision)
     {
+        if (collision.transform.tag == "Player") return;
+
         GameObject vfx = Instantiate(sparkFX, transform.position, Quaternion.LookRotation(collision.transform.forward));
         Destroy(vfx, 1.0f);
         Destroy(gameObject);
