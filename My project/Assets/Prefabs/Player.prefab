@@ -329,6 +329,7 @@ MonoBehaviour:
   playerWeaponManager: {fileID: 4658087763043889856}
   originPoint: {fileID: 8840905676251217532}
   viewAnim: {fileID: 397607379076036652}
+  flash: {fileID: 5932140238969974636, guid: 2a9760e549517694d91ff686dd57fec3, type: 3}
 --- !u!114 &7970841881368488037
 MonoBehaviour:
   m_ObjectHideFlags: 0

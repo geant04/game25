@@ -5,6 +5,8 @@ using UnityEngine;
 public class MachineGun : HitScanWeapon
 {
     public GameObject spark;
+    public GameObject bundle;
+    public GameObject flash;
 
     public override void Initialize()
     {
@@ -50,9 +52,13 @@ public class MachineGun : HitScanWeapon
 
     public IEnumerator Recoil(GameObject viewAnim, float waitTime)
     {
-        GameObject bundle = GameObject.Find("Bundle"); // this is so ass
         Transform rot = null;
-        if (bundle)
+
+        if (bundle == null)
+        {
+            bundle = GameObject.Find("Bundle"); // this is so ass
+        }
+        if (bundle != null)
         {
             rot = bundle.transform;
         }

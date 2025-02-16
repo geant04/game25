@@ -52,7 +52,6 @@ public abstract class HitScanWeapon : Gun
             return hit.collider.GetComponent<Enemy>();
         }
 
-        Debug.Log("Miss");
         return null;
     }
 }
