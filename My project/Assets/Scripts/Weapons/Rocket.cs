@@ -14,7 +14,7 @@ public class Rocket : MonoBehaviour
     
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.tag == "Player") return;
+        if (collision.transform.tag == "Player" && transform.tag != "Enemy") return;
 
         if (transform.childCount > 0) {
             if (transform.GetChild(0).gameObject.TryGetComponent<ParticleSystem>(out ParticleSystem ps)) {

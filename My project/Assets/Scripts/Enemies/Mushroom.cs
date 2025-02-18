@@ -26,6 +26,8 @@ public class Mushroom : Enemy
     // Update is called once per frame
     void Update()
     {
+        if (playerScript.isDead) return;
+
         if (state == EnemyState.Idle && (getDist() < 17 && lineOfSightCheck() || getDist() < 6) ) {
             state = EnemyState.Random;
         }
@@ -60,7 +62,6 @@ public class Mushroom : Enemy
             Attack();
         }
 
-
         freezeTimer = TimerF(freezeTimer);
 
         if (state == EnemyState.Idle || freezeTimer > 0.1f) return;
@@ -73,8 +74,8 @@ public class Mushroom : Enemy
 
         reloadTimer = TimerF(reloadTimer);
         waypointTimer = TimerF(waypointTimer);
-
     }
+
     void FixedUpdate() {
         
         if (state != EnemyState.Idle) {

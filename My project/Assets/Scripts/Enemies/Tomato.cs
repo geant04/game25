@@ -34,6 +34,8 @@ public class Tomato : Enemy
     // Update is called once per frame
     void Update()
     {
+        if (playerScript.isDead) return;
+
         if (state == EnemyState.Idle && (getDist() < 17 && lineOfSightCheck() || getDist() < 6) ) {
             state = EnemyState.Still;
         }

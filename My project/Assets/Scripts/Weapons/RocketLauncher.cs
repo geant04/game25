@@ -7,7 +7,7 @@ public class RocketLauncher : ProjectileWeapon
     public override void Initialize()
     {
         Debug.Log("Initialize Rocket");
-        maxAmmo = 20;
+        maxAmmo = 10;
         ammo = maxAmmo;
         reloadTime = 0.4f;
         localPos = new Vector3(0, 0, 0.5f);

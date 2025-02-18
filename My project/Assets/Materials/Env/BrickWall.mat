@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Pixel
-  m_Shader: {fileID: -6465566751694194690, guid: c34ca68a6cd4fa8439cbaf7668e058e3, type: 3}
+  m_Name: BrickWall
+  m_Shader: {fileID: -6465566751694194690, guid: d1eef281d8be819479d9e71710856476, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -37,9 +37,21 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Resolution: 500
-    - _X: 640
-    - _Y: 360
+    - _QueueControl: 0
+    - _QueueOffset: 0
     m_Colors:
-    - _Aspect_Ratio: {r: 16, g: 9, b: 0, a: 0}
+    - _BaseColor: {r: 0.4716981, g: 0.4073217, b: 0.3337486, a: 0}
   m_BuildTextureStacks: []
+--- !u!114 &8353934178321567391
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7

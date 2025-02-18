@@ -13,7 +13,7 @@ public abstract class Enemy : MonoBehaviour
     protected Rigidbody playerRB;
     [HideInInspector] public Vector3 destination;
     [HideInInspector] public UnityEngine.AI.NavMeshAgent agent;
-    protected PlayerMovement playerScript;
+    protected Player playerScript;
 
     public void TakeDamage(int amt)
     {
@@ -49,13 +49,12 @@ public abstract class Enemy : MonoBehaviour
         if (player == null) {
             Debug.Log("Could not find player");
         } else {
-            
-            playerScript = player.GetComponent<PlayerMovement>();
+            playerScript = player.GetComponent<Player>();
             playerRB = playerScript.myRB;
         }
     }
     protected float getDist() {
-        return Vector3.Distance(transform.position, playerRB.position);
+        return playerRB ? Vector3.Distance(transform.position, playerRB.position) : float.NaN;
     }
     protected bool lineOfSightCheck() {
         if (playerRB == null) {

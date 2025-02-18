@@ -4,20 +4,19 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class PlayerMovement : MonoBehaviour
+public class Player : MonoBehaviour
 {
+    [HideInInspector] public bool isDead;
+    public float jumpSpeed, moveSpeed, gravity;
     public int health;
     public Rigidbody myRB;
     public Transform feet;
-    public float jumpSpeed, moveSpeed;
-    public float gravity;
+
     private float moveFB, moveLR;
-    private bool isDead;
     
     public GameObject camera;
     public float camTilt, trigInput;
     private float cameraY, maxTilt, maxRaise;
-
 
     [SerializeField] private TextMeshProUGUI title;
 
@@ -27,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
         isDead = false;
         health = 2;
         moveFB = 0; moveLR = 0;
-        cameraY = camera.transform.position.y;
+        cameraY = camera.transform.position.y - transform.position.y;
         maxTilt = 3;
         maxRaise = 0.03f;
     }
@@ -66,9 +65,13 @@ public class PlayerMovement : MonoBehaviour
 
         //head bobbing
         if (grounded && (moveFB != 0 || moveLR != 0 || trigInput > 0.1f)) {
+            float camPosY = transform.position.y + cameraY;
             trigInput += 9 * Time.deltaTime;
             if (trigInput > 2 * 3.141592f) trigInput = 0.03f;
-            camera.transform.position = new Vector3(camera.transform.position.x + 0.000001f, cameraY - maxRaise * Mathf.Cos(trigInput), camera.transform.position.z - 0.00000001f);
+            camera.transform.position = new Vector3(
+                camera.transform.position.x + 0.000001f, 
+                camPosY - maxRaise * Mathf.Cos(trigInput), 
+                camera.transform.position.z - 0.00000001f);
         }
 
         if (title)
@@ -103,7 +106,7 @@ public class PlayerMovement : MonoBehaviour
 
         Debug.Log("God I am dead");
         isDead = true;
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
     
 }

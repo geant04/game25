@@ -11,7 +11,7 @@ public class MachineGun : HitScanWeapon
     {
         Debug.Log("Initialize MachineGun");
         bulletDmg = 20;
-        maxAmmo = 500;
+        maxAmmo = 50;
         ammo = maxAmmo;
         reloadTime = 0.1f;
         cooldownTime = 0.2f;

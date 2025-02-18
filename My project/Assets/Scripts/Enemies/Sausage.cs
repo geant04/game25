@@ -31,6 +31,8 @@ public class Sausage : Enemy
     // Update is called once per frame
     void Update()
     {
+        if (playerScript.isDead) return;
+
         if (state == EnemyState.Idle && (getDist() < 18 && lineOfSightCheck() || getDist() < 6) ) {
             state = EnemyState.Random;
         }

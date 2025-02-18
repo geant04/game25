@@ -12,7 +12,7 @@ public class AmmoCrate : Pickups
             Gun gun = gunObj.GetComponent<Gun>();
             if (gun)
             {
-                gun.RefillAmmo(gun.maxAmmo / 3);
+                gun.RefillAmmo( (int) (gun.maxAmmo / 2.5f) );
             }
         }
     }
