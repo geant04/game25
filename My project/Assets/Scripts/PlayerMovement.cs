@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
         health = 2;
         moveFB = 0; moveLR = 0;
         cameraY = camera.transform.position.y;
-        maxTilt = 9;
+        maxTilt = 3;
         maxRaise = 0.03f;
     }
 

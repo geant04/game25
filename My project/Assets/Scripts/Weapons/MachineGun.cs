@@ -10,7 +10,7 @@ public class MachineGun : HitScanWeapon
     public override void Initialize()
     {
         Debug.Log("Initialize MachineGun");
-        bulletDmg = 10;
+        bulletDmg = 20;
         maxAmmo = 500;
         ammo = maxAmmo;
         reloadTime = 0.1f;

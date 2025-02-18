@@ -39,11 +39,11 @@ public class Gun : MonoBehaviour
 
 public abstract class HitScanWeapon : Gun
 {
-    public int bulletDmg;
+    [HideInInspector] public int bulletDmg;
     protected LineRenderer laserLine;
-    private float range = 100;
-    
     protected RaycastHit hit;
+
+    private float range = 100;
 
     public Enemy RayCastFire(Vector3 origin, Vector3 forward)
     {
