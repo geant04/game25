@@ -29,8 +29,9 @@ public class MachineGun : HitScanWeapon
         ammo--;
         reloadTimeLeft = reloadTime;
 
-        Enemy target = RayCastFire(origin, dir);
+        dir = Vector3.Normalize(dir + 0.04f * Random.insideUnitSphere);
 
+        Enemy target = RayCastFire(origin, dir);
         GameObject trace = Instantiate(tracer);
         float mag = Mathf.Max(Vector3.Distance(hit.point, origin), 40.0f);
         trace.GetComponent<LineRenderer>().SetPosition(0, origin);

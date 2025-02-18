@@ -3,6 +3,7 @@ using UnityEngine;
 public class Gun : MonoBehaviour
 {
     public GameObject viewModel; // assign this in inspector, needed to change model
+    [SerializeField] public SoundData soundData;
 
     [HideInInspector] public int maxAmmo, ammo;
     [HideInInspector] public float reloadTime, cooldownTime;

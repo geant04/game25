@@ -9,6 +9,7 @@ public class Rocket : MonoBehaviour
     public bool ignoreSpeed;
     public float speed;
     public GameObject sparkFX;
+    public SoundData soundData;
 
     private Vector3 dir;
     
@@ -24,6 +25,10 @@ public class Rocket : MonoBehaviour
             transform.GetChild(0).parent = null;
         }
 
+        SoundManager.Instance.CreateSound()
+                    .WithSoundData(soundData)
+                    .WithPosition(transform.position)
+                    .Play();
         GameObject vfx = Instantiate(sparkFX, transform.position + 0.5f * transform.forward, Quaternion.LookRotation(collision.transform.forward));
         Destroy(vfx, 1.0f);
         Destroy(gameObject);

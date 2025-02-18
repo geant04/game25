@@ -360,6 +360,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c440f3566e6c12b4384a97ab14b8cfe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hurtSound:
+    clip: {fileID: 8300000, guid: fc454936e6d716c41a2a3db2fa45a0d8, type: 3}
+    mixerGroup: {fileID: 0}
+    loop: 0
+    playOnAwake: 0
+    frequentSound: 0
+  deathSound:
+    clip: {fileID: 8300000, guid: d62cb1ce4cd7ae74a835cd8a3df9bec6, type: 3}
+    mixerGroup: {fileID: 0}
+    loop: 0
+    playOnAwake: 0
+    frequentSound: 0
   health: 0
   speed: 0
   turnSpeed: 0

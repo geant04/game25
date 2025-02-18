@@ -4,23 +4,36 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
+    [Header("Sound Effects")]
+    public SoundData hurtSound;
+    public SoundData deathSound;
+
     public int health;
     public float speed, turnSpeed;
-    protected float cTurnSpeed;
     public EnemyState state;
+    [HideInInspector] public Vector3 destination;
+    [HideInInspector] public UnityEngine.AI.NavMeshAgent agent;
+
+    protected float cTurnSpeed;
     protected bool isDead;
     protected GameObject player;
     protected Rigidbody playerRB;
-    [HideInInspector] public Vector3 destination;
-    [HideInInspector] public UnityEngine.AI.NavMeshAgent agent;
     protected Player playerScript;
 
     public void TakeDamage(int amt)
     {
         health = Mathf.Max(0, health - amt);
+        SoundManager.Instance.CreateSound()
+                    .WithSoundData(hurtSound)
+                    .WithPosition(transform.position)
+                    .Play();
         Debug.Log(transform.name + " wuz hit, hp: " + health);
         if (health <= 0)
         {
+            SoundManager.Instance.CreateSound()
+                    .WithSoundData(deathSound)
+                    .WithPosition(transform.position)
+                    .Play();
             Kill();
         }
     }

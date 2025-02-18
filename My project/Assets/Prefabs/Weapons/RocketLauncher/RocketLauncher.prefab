@@ -45,11 +45,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   viewModel: {fileID: 3441971214668025769, guid: f8cc8060139fd0a4799822b5658c2073, type: 3}
-  maxAmmo: 0
-  ammo: 0
-  reloadTime: 0
+  soundData:
+    clip: {fileID: 8300000, guid: 4301b2eb1a9aa5c4698ac85505a83032, type: 3}
+    mixerGroup: {fileID: 0}
+    loop: 0
+    playOnAwake: 0
+    frequentSound: 1
+  maxAmmo: 10
+  ammo: 2
+  reloadTime: 0.4
   cooldownTime: 0
   isActive: 0
   viewAnim: {fileID: 0}
-  localPos: {x: 0, y: 0, z: 0}
+  localPos: {x: 0, y: 0, z: 0.5}
   projectile: {fileID: 7233332238351996326, guid: 201e22e056aa0874bbcd48e382d10a9b, type: 3}

@@ -27,6 +27,12 @@ public class PlayerWeaponController : MonoBehaviour
                 GameObject fx = Instantiate(flash, originPoint.transform.position, Quaternion.LookRotation(originPoint.transform.forward));
                 fx.transform.Rotate(transform.forward, Random.Range(0.0f, 360.0f));
                 Destroy(fx, 0.1f); // do a pool system honestly
+
+                SoundManager.Instance.CreateSound()
+                    .WithSoundData(weapon.soundData)
+                    .WithRandomPitch()
+                    .WithPosition(originPoint.transform.position)
+                    .Play();
             }
         }
         if (Input.GetKeyDown(KeyCode.R))

@@ -13,17 +13,15 @@ public class Pickups : MonoBehaviour
     private Vector3 ogPos;
     private float t = 0.0f;
 
-    public virtual void BonusPerk(PlayerWeaponManager playerWeaponManager) { }
+    public virtual bool BonusPerk(PlayerWeaponManager playerWeaponManager) { return false; }
 
     void OnTriggerEnter(Collider collider)
     {
-        Debug.Log("Entered");
         if (collider.transform.tag == "Player")
         {
             PlayerWeaponManager player = collider.transform.GetComponent<PlayerWeaponManager>();
-            if (player)
+            if (player && BonusPerk(player))
             {
-                BonusPerk(player);
                 Destroy(gameObject);
             }
         }

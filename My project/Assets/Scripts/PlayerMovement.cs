@@ -12,6 +12,10 @@ public class Player : MonoBehaviour
     public Rigidbody myRB;
     public Transform feet;
 
+    [Header("Sound Data")]
+    public SoundData hurtData;
+    public SoundData jumpData;
+
     private float moveFB, moveLR;
     
     public GameObject camera;
@@ -94,6 +98,11 @@ public class Player : MonoBehaviour
     public void TakeDamage(int amt) {
         health = Mathf.Max(0, health - amt);
         Debug.Log(" ouch i hurt, hp: " + health);
+
+        SoundManager.Instance.CreateSound()
+                    .WithSoundData(hurtData)
+                    .WithPosition(transform.position)
+                    .Play();
         if (health <= 0)
         {
             Kill();
