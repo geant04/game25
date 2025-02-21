@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a8006832c9757a42989241303eb88cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathExplosion: {fileID: 7235108229669765032, guid: af658e02b3d1d614a8f52094d0ef2b23, type: 3}
   health: 0
   speed: 0
   turnSpeed: 0

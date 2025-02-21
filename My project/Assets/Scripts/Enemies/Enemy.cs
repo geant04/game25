@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
+    public GameObject deathExplosion;
     public int health;
     public float speed, turnSpeed;
     protected float cTurnSpeed;
@@ -31,6 +32,8 @@ public abstract class Enemy : MonoBehaviour
 
         Debug.Log("deceased");
         isDead = true;
+        GameObject spark = Instantiate(deathExplosion, transform.position, Quaternion.LookRotation(transform.forward));
+        Destroy(spark, 2);
         Destroy(gameObject);
     }
 
