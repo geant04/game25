@@ -1,0 +1,4 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/style.uss?fileID=7433441132597879392&amp;guid=ce49ad4c140847240a662b9e21113514&amp;type=3#style" />
+    <ui:GroupBox name="CenterBox" style="height: 400px; justify-content: flex-end; width: 800px; align-items: auto; align-self: center; top: 40%;" />
+</ui:UXML>

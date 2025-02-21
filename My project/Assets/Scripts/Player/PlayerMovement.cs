@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public int health;
     public Rigidbody myRB;
     public Transform feet;
+    public GameObject viewAnim;
 
     [Header("Sound Data")]
     public SoundData hurtData;

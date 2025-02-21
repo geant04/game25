@@ -1,0 +1,8 @@
+.item {
+    color: rgb(255, 0, 0);
+    min-width: 100%;
+    min-height: auto;
+    height: 75px;
+    -unity-text-align: upper-center;
+    font-size: 60px;
+}
