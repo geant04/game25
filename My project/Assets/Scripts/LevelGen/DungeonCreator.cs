@@ -28,6 +28,9 @@ public class DungeonCreator : MonoBehaviour
 
     private GameObject terrainParent;
 
+    public GameObject[] mobs;
+    public GameObject player;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,11 +52,26 @@ public class DungeonCreator : MonoBehaviour
         
         terrainParent = new GameObject("TerrainParent");
 
+        int roomNum = UnityEngine.Random.Range(0, listOfRooms.Count);
+
         for (int i = 0; i < listOfRooms.Count; i++) {
             var room = listOfRooms[i];
             CreateMesh(room.BottomLeftAreaCorner, room.TopRightAreaCorner);
         }
         CreateWalls(wallParent);
+
+        // SpawnPlayer(listOfRooms);
+    }
+
+    private void SpawnPlayer(List<Node> listOfRooms) {
+        Vector3 offset = new Vector3(-dungeonWidth / 2, 1.0f, -dungeonLength / 2);
+        int amt = listOfRooms.Count;
+        int roomNum = UnityEngine.Random.Range(0, amt);
+
+        var room = listOfRooms[roomNum];
+        Vector2 avgPos = (room.BottomLeftAreaCorner + room.TopRightAreaCorner) / 2;
+        Vector3 avgPosV3 = new Vector3(avgPos.x, 0, avgPos.y);
+        Instantiate(player, avgPosV3 + offset, Quaternion.identity, transform);
     }
 
     private void CreateWalls(GameObject wallParent) {
@@ -125,6 +143,12 @@ public class DungeonCreator : MonoBehaviour
             var wallPosition = new Vector3(bottomRightV.x, 0, col);
             AddWallPositionToList(wallPosition, possibleWallVerticalPosition, possibleDoorVerticalPosition);
         }
+
+        Vector3 offset = new Vector3(-dungeonWidth / 2, 1.0f, -dungeonLength / 2);
+        Vector3 avgPos = (bottomLeftV + topRightV) / 2;
+
+        int mobNum = UnityEngine.Random.Range(0, mobs.Length);
+        Instantiate(mobs[mobNum], avgPos + offset, Quaternion.identity, transform);
     }
 
     private void AddWallPositionToList(Vector3 wallPosition, List<Vector3Int> wallList, List<Vector3Int> doorList)

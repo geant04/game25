@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d416754dd4761348981afdf16142537, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxBlastDamage: 200
+  maxBlastDamage: 300
 --- !u!1 &4420926040828619803
 GameObject:
   m_ObjectHideFlags: 0

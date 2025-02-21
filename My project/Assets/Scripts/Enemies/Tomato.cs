@@ -18,7 +18,7 @@ public class Tomato : Enemy
     void Start()
     {
         cTurnSpeed = 0;
-        health = 200;
+        health = 150;
         speed = 2.5f;
         turnSpeed = 140;
         isDead = false;
