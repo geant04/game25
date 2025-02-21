@@ -22,24 +22,13 @@ public class DungeonGenerator
         allNodesCollection = bsp.PrepareNodesCollection(maxIterations, roomWidthMin, roomLengthMin);
         List<Node> roomSpaces = StructureHelper.TraverseGraphToExtractLowestLeaves(bsp.RootNode);
 
+        Vector3Int dungeonCenter = new Vector3Int(dungeonWidth / 2, 0, dungeonLength / 2);
         RoomGenerator roomGenerator = new RoomGenerator(maxIterations, roomLengthMin, roomWidthMin);
-        List<RoomNode> roomList = roomGenerator.GenerateRoomsInGivenSpaces(roomSpaces, roomBottomCornerModifier, roomTopCornerModifier, roomOffset);
+        List<RoomNode> roomList = roomGenerator.GenerateRoomsInGivenSpaces(roomSpaces, roomBottomCornerModifier, roomTopCornerModifier, roomOffset, dungeonCenter);
 
         CorridorGenerator corridorGenerator = new CorridorGenerator();
         var corridorList = corridorGenerator.CreateCorridor(allNodesCollection, corridorWidth);
 
-        foreach(var room in roomList)
-        {
-            Vector3 bottomLeftV = new Vector3(room.BottomLeftAreaCorner.x, 0, room.BottomLeftAreaCorner.y);
-            Vector3 topRightV = new Vector3(room.TopRightAreaCorner.x, 0, room.TopRightAreaCorner.y);
-
-            Vector3 offset = new Vector3(-dungeonWidth / 2, 1.0f, -dungeonLength / 2);
-            Vector3 avgPos = (bottomLeftV + topRightV) / 2;
-
-            SpawnZone zone = new SpawnZone(avgPos + offset);
-            room.AddSpawnZone(zone);
-        }
-        
         return new List<Node>(roomList).Concat(corridorList).ToList();
     }
 }

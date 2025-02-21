@@ -59,9 +59,7 @@ public class DungeonCreator : MonoBehaviour
             CreateMesh(room.BottomLeftAreaCorner, room.TopRightAreaCorner);
         }
         CreateWalls(wallParent);
-
         SpawnMobs(listOfRooms);
-
         SpawnPlayer(listOfRooms);
     }
 
@@ -99,33 +97,33 @@ public class DungeonCreator : MonoBehaviour
         Vector3 topLeftV = new Vector3(bottomLeftCorner.x, 0, topRightCorner.y);
         Vector3 topRightV = new Vector3(topRightCorner.x, 0, topRightCorner.y);
 
-        Vector3[] vertices = new Vector3[] {
-            topLeftV, topRightV, bottomLeftV, bottomRightV
-        };
+        // Vector3[] vertices = new Vector3[] {
+        //     topLeftV, topRightV, bottomLeftV, bottomRightV
+        // };
 
-        Vector2[] uvs = new Vector2[vertices.Length];
-        for (int i = 0; i < uvs.Length; i++) {
-            uvs[i] = new Vector2(vertices[i].x, vertices[i].z);
-        }
+        // Vector2[] uvs = new Vector2[vertices.Length];
+        // for (int i = 0; i < uvs.Length; i++) {
+        //     uvs[i] = new Vector2(vertices[i].x, vertices[i].z);
+        // }
 
-        int[] triangles = new int[] {
-            1, 2, 0,
-            3, 2, 1
-        };
+        // int[] triangles = new int[] {
+        //     1, 2, 0,
+        //     3, 2, 1
+        // };
 
-        Mesh mesh = new Mesh();
-        mesh.vertices = vertices;
-        mesh.uv = uvs;
-        mesh.triangles = triangles;
-        // mesh.normals = new Vector3[] { -Vector3.up, -Vector3.up, -Vector3.up, -Vector3.up };
+        // Mesh mesh = new Mesh();
+        // mesh.vertices = vertices;
+        // mesh.uv = uvs;
+        // mesh.triangles = triangles;
+        // // mesh.normals = new Vector3[] { -Vector3.up, -Vector3.up, -Vector3.up, -Vector3.up };
         
-        GameObject dungeonFloor = new GameObject("Mesh"+bottomLeftCorner, typeof(MeshFilter), typeof(MeshRenderer));
+        // GameObject dungeonFloor = new GameObject("Mesh"+bottomLeftCorner, typeof(MeshFilter), typeof(MeshRenderer));
 
-        dungeonFloor.transform.position = new Vector3(-dungeonWidth / 2, 0, -dungeonLength / 2);
-        dungeonFloor.transform.localScale = new Vector3(1, 1, 1);
-        dungeonFloor.GetComponent<MeshFilter>().mesh = mesh;
-        dungeonFloor.GetComponent<MeshRenderer>().material = material;
-        dungeonFloor.transform.SetParent(terrainParent.transform);
+        // dungeonFloor.transform.position = new Vector3(-dungeonWidth / 2, 0, -dungeonLength / 2);
+        // dungeonFloor.transform.localScale = new Vector3(1, 1, 1);
+        // dungeonFloor.GetComponent<MeshFilter>().mesh = mesh;
+        // dungeonFloor.GetComponent<MeshRenderer>().material = material;
+        // dungeonFloor.transform.SetParent(terrainParent.transform);
 
         for (int row = (int)bottomLeftV.x; row <= (int)bottomRightV.x; row++)
         {
