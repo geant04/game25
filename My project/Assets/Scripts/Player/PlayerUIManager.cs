@@ -24,9 +24,6 @@ public class PlayerUIManager : MonoBehaviour
             this);
 
         // sidebox not integrated
-        InsertToCenterBox("I'm", 4);
-        InsertToCenterBox("jaking", 5);
-        InsertToCenterBox("it", 6);
     }
 
     public void InsertToCenterBox(MessageUI message)
@@ -75,7 +72,7 @@ public class PopUpBox
     }
 }
 
-public class UIPopUp // make this a monobehavior, then move messageContainer Instantiation here, then things shouldn't be popped off mysteriously I hope
+public class UIPopUp
 {
     private float lifeTime;
     private string text;
@@ -104,7 +101,6 @@ public class UIPopUp // make this a monobehavior, then move messageContainer Ins
             yield return null;
         }
 
-        Debug.Log("I am deader");
         parent.RemovePopUp(this, root);
         yield return null;
     }

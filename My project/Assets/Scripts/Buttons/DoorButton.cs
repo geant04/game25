@@ -18,7 +18,7 @@ public class DoorButton : Button
 
     public override void Activate()
     {
-        player.GetComponent<PlayerUIManager>().InsertToCenterBox("A DOOR HAS BEEN UNLOCKED", 1.0f);
+        base.Activate();
         StartCoroutine(LowerDoor(closingTime));
     }
 

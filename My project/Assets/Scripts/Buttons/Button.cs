@@ -6,9 +6,9 @@ using UnityEngine;
 public class Button : MonoBehaviour
 {
     public KeyCode keyCode;
-    public float inset;
+    public string message;
     public bool isReusable;
-    public float cooldown;
+    public float inset, cooldown;
     public SoundData soundFx;
     public Player player;
 
@@ -18,13 +18,13 @@ public class Button : MonoBehaviour
 
     public virtual void Activate()
     {
-        Debug.Log("Boop");
-        return;
+        if (string.IsNullOrEmpty(message)) return;
+        player.GetComponent<PlayerUIManager>().InsertToCenterBox(message, 1.0f);
     }
 
     public virtual void InsertButton(bool BackOrIn)
     {
-        transform.localPosition = BackOrIn ? localPosition : transform.forward * -inset;
+        transform.localPosition = BackOrIn ? localPosition : localPosition + transform.forward * -inset;
     }
 
     private void Awake()
