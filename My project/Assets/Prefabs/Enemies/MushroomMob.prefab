@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 2075835423158453543}
   - component: {fileID: 7567253330995842987}
   - component: {fileID: 6127232261019044796}
-  - component: {fileID: 7913947732426337486}
   - component: {fileID: 8481043032136205781}
   - component: {fileID: 5008836028443846288}
+  - component: {fileID: 5804312162916747049}
   m_Layer: 0
   m_Name: MushroomMob
   m_TagString: Enemy
@@ -108,27 +108,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &7913947732426337486
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2857701105717980315}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &8481043032136205781
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -178,6 +157,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!65 &5804312162916747049
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2857701105717980315}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4.085803, y: 3.1768425, z: 0.39741278}
+  m_Center: {x: -0.014436245, y: 0.39176285, z: -0.010893583}
 --- !u!1 &6890811667409353142
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5532245224128434241}
   - component: {fileID: 4793724587015173962}
   - component: {fileID: 7457068498169889852}
-  - component: {fileID: 4937369158476927722}
   - component: {fileID: 2207832387255874007}
   - component: {fileID: 2444437312553930717}
+  - component: {fileID: 2808854981212371941}
   m_Layer: 3
   m_Name: SausageMob
   m_TagString: Enemy
@@ -113,27 +113,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &4937369158476927722
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5340047971944473773}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &2207832387255874007
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -183,6 +162,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!65 &2808854981212371941
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5340047971944473773}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.6428225, y: 1.793167, z: 0.093407094}
+  m_Center: {x: -0.022343408, y: 0.15318288, z: -0.029006733}
 --- !u!1 &5565097472103913050
 GameObject:
   m_ObjectHideFlags: 0
