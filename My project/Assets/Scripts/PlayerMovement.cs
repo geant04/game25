@@ -78,7 +78,6 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void FixedUpdate() {
-        
         Vector3 movement = (Vector3.up * gravity + transform.right * moveLR + moveFB * transform.forward);
         transform.position += (Time.fixedDeltaTime * moveSpeed * movement);
     }

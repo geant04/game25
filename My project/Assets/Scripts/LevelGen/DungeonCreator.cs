@@ -60,18 +60,22 @@ public class DungeonCreator : MonoBehaviour
         }
         CreateWalls(wallParent);
 
-        // SpawnPlayer(listOfRooms);
+        SpawnMobs(listOfRooms);
+
+        SpawnPlayer(listOfRooms);
+    }
+
+    private void SpawnMobs(List<Node> listOfRooms) {
+        foreach(var room in listOfRooms) {
+            foreach(var zone in room.SpawnZones) {
+                int mobNum = UnityEngine.Random.Range(0, mobs.Length);
+                Instantiate(mobs[mobNum], zone.position, Quaternion.identity, transform);
+            }
+        }
     }
 
     private void SpawnPlayer(List<Node> listOfRooms) {
-        Vector3 offset = new Vector3(-dungeonWidth / 2, 1.0f, -dungeonLength / 2);
-        int amt = listOfRooms.Count;
-        int roomNum = UnityEngine.Random.Range(0, amt);
-
-        var room = listOfRooms[roomNum];
-        Vector2 avgPos = (room.BottomLeftAreaCorner + room.TopRightAreaCorner) / 2;
-        Vector3 avgPosV3 = new Vector3(avgPos.x, 0, avgPos.y);
-        Instantiate(player, avgPosV3 + offset, Quaternion.identity, transform);
+        player.transform.position = new Vector3(0, 3, 0);
     }
 
     private void CreateWalls(GameObject wallParent) {
@@ -95,60 +99,55 @@ public class DungeonCreator : MonoBehaviour
         Vector3 topLeftV = new Vector3(bottomLeftCorner.x, 0, topRightCorner.y);
         Vector3 topRightV = new Vector3(topRightCorner.x, 0, topRightCorner.y);
 
-        // Vector3[] vertices = new Vector3[] {
-        //     topLeftV, topRightV, bottomLeftV, bottomRightV
-        // };
+        Vector3[] vertices = new Vector3[] {
+            topLeftV, topRightV, bottomLeftV, bottomRightV
+        };
 
-        // Vector2[] uvs = new Vector2[vertices.Length];
-        // for (int i = 0; i < uvs.Length; i++) {
-        //     uvs[i] = new Vector2(vertices[i].x, vertices[i].z);
-        // }
+        Vector2[] uvs = new Vector2[vertices.Length];
+        for (int i = 0; i < uvs.Length; i++) {
+            uvs[i] = new Vector2(vertices[i].x, vertices[i].z);
+        }
 
-        // int[] triangles = new int[] {
-        //     1, 2, 0,
-        //     3, 2, 1
-        // };
+        int[] triangles = new int[] {
+            1, 2, 0,
+            3, 2, 1
+        };
 
-        // Mesh mesh = new Mesh();
-        // mesh.vertices = vertices;
-        // mesh.uv = uvs;
-        // mesh.triangles = triangles;
-        // // mesh.normals = new Vector3[] { -Vector3.up, -Vector3.up, -Vector3.up, -Vector3.up };
+        Mesh mesh = new Mesh();
+        mesh.vertices = vertices;
+        mesh.uv = uvs;
+        mesh.triangles = triangles;
+        // mesh.normals = new Vector3[] { -Vector3.up, -Vector3.up, -Vector3.up, -Vector3.up };
         
-        // GameObject dungeonFloor = new GameObject("Mesh"+bottomLeftCorner, typeof(MeshFilter), typeof(MeshRenderer));
+        GameObject dungeonFloor = new GameObject("Mesh"+bottomLeftCorner, typeof(MeshFilter), typeof(MeshRenderer));
 
-        // dungeonFloor.transform.position = new Vector3(-dungeonWidth / 2, 0, -dungeonLength / 2);
-        // dungeonFloor.transform.localScale = new Vector3(1, 1, 1);
-        // dungeonFloor.GetComponent<MeshFilter>().mesh = mesh;
-        // dungeonFloor.GetComponent<MeshRenderer>().material = material;
-        // dungeonFloor.transform.SetParent(terrainParent.transform);
+        dungeonFloor.transform.position = new Vector3(-dungeonWidth / 2, 0, -dungeonLength / 2);
+        dungeonFloor.transform.localScale = new Vector3(1, 1, 1);
+        dungeonFloor.GetComponent<MeshFilter>().mesh = mesh;
+        dungeonFloor.GetComponent<MeshRenderer>().material = material;
+        dungeonFloor.transform.SetParent(terrainParent.transform);
 
-        for (int row = (int)bottomLeftV.x; row < (int)bottomRightV.x; row++)
+        for (int row = (int)bottomLeftV.x; row <= (int)bottomRightV.x; row++)
         {
             var wallPosition = new Vector3(row, 0, bottomLeftV.z);
             AddWallPositionToList(wallPosition, possibleWallHorizontalPosition, possibleDoorHorizontalPosition);
         }
-        for (int row = (int)topLeftV.x; row < (int)topRightCorner.x; row++)
+        for (int row = (int)topLeftV.x; row <= (int)topRightCorner.x; row++)
         {
             var wallPosition = new Vector3(row, 0, topRightV.z);
             AddWallPositionToList(wallPosition, possibleWallHorizontalPosition, possibleDoorHorizontalPosition);
         }
-        for (int col = (int)bottomLeftV.z; col < (int)topLeftV.z; col++)
+        for (int col = (int)bottomLeftV.z; col <= (int)topLeftV.z; col++)
         {
             var wallPosition = new Vector3(bottomLeftV.x, 0, col);
             AddWallPositionToList(wallPosition, possibleWallVerticalPosition, possibleDoorVerticalPosition);
         }
-        for (int col = (int)bottomRightV.z; col < (int)topRightV.z; col++)
+        for (int col = (int)bottomRightV.z; col <= (int)topRightV.z; col++)
         {
             var wallPosition = new Vector3(bottomRightV.x, 0, col);
             AddWallPositionToList(wallPosition, possibleWallVerticalPosition, possibleDoorVerticalPosition);
         }
 
-        Vector3 offset = new Vector3(-dungeonWidth / 2, 1.0f, -dungeonLength / 2);
-        Vector3 avgPos = (bottomLeftV + topRightV) / 2;
-
-        int mobNum = UnityEngine.Random.Range(0, mobs.Length);
-        Instantiate(mobs[mobNum], avgPos + offset, Quaternion.identity, transform);
     }
 
     private void AddWallPositionToList(Vector3 wallPosition, List<Vector3Int> wallList, List<Vector3Int> doorList)

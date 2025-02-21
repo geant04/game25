@@ -27,6 +27,18 @@ public class DungeonGenerator
 
         CorridorGenerator corridorGenerator = new CorridorGenerator();
         var corridorList = corridorGenerator.CreateCorridor(allNodesCollection, corridorWidth);
+
+        foreach(var room in roomList)
+        {
+            Vector3 bottomLeftV = new Vector3(room.BottomLeftAreaCorner.x, 0, room.BottomLeftAreaCorner.y);
+            Vector3 topRightV = new Vector3(room.TopRightAreaCorner.x, 0, room.TopRightAreaCorner.y);
+
+            Vector3 offset = new Vector3(-dungeonWidth / 2, 1.0f, -dungeonLength / 2);
+            Vector3 avgPos = (bottomLeftV + topRightV) / 2;
+
+            SpawnZone zone = new SpawnZone(avgPos + offset);
+            room.AddSpawnZone(zone);
+        }
         
         return new List<Node>(roomList).Concat(corridorList).ToList();
     }

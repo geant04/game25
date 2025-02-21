@@ -16,10 +16,14 @@ public abstract class Node {
     
     public Node Parent { get; set; }
 
+    private List<SpawnZone> spawnZones;
+    public List<SpawnZone> SpawnZones { get => spawnZones; }
+
     public int TreeLayerIndex {get; set;}
 
     public Node(Node parentNode) {
         childrenNodeList = new List<Node>();
+        spawnZones = new List<SpawnZone>();
         this.Parent = parentNode;
         if (parentNode != null) {
             parentNode.AddChild(this);
@@ -32,5 +36,9 @@ public abstract class Node {
 
     private void RemoveChild(Node child) {
         childrenNodeList.Remove(child);
+    }
+
+    public void AddSpawnZone(SpawnZone zone) {
+        spawnZones.Add(zone);
     }
 }
