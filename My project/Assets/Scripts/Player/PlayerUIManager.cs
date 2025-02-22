@@ -11,6 +11,9 @@ public class PlayerUIManager : MonoBehaviour
     private UIDocument uiDocument;
     private PopUpBox centerBox; // used for text like "Press E to activate button"
     private PopUpBox sideBox; // used for text like "+10 ammo picked up, fade..."
+    private GroupBox data;
+    private Label hpDisplay;
+    private Label ammoDisplay;
 
     public void Awake()
     {
@@ -23,7 +26,14 @@ public class PlayerUIManager : MonoBehaviour
             itemLabel, 
             this);
 
-        // sidebox not integrated
+        data = uiDocument.rootVisualElement.Q("Data") as GroupBox;
+        hpDisplay = data.Q("HP") as Label;
+        ammoDisplay = data.Q("Ammo") as Label;
+    }
+
+    public void SetAmmo(string text)
+    {
+        ammoDisplay.text = text;
     }
 
     public void InsertToCenterBox(MessageUI message)

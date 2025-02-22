@@ -12,6 +12,11 @@ public class Player : MonoBehaviour
     public Rigidbody myRB;
     public Transform feet;
     public GameObject viewAnim;
+    
+    // store this for simple referencing
+    public PlayerController playerController;
+    public PlayerWeaponManager playerWeaponManager;
+    public PlayerUIManager playerUIManager;
 
     [Header("Sound Data")]
     public SoundData hurtData;
@@ -34,6 +39,9 @@ public class Player : MonoBehaviour
         cameraY = camera.transform.position.y - transform.position.y;
         maxTilt = 3;
         maxRaise = 0.03f;
+/*
+        playerController = GetComponent<PlayerController>();
+        playerWeaponManager = GetComponent<PlayerWeaponManager>();*/
     }
 
     // Update is called once per frame

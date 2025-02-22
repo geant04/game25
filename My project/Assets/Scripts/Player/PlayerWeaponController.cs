@@ -7,15 +7,30 @@ public class PlayerWeaponController : MonoBehaviour
 {
     // TO DO: if you want to abstract this further, just make it base class inherit from a weapon class
     public Gun weapon;
-    public PlayerController playerController;
-    public PlayerWeaponManager playerWeaponManager;
+    public Player player;
     public GameObject originPoint;
     public GameObject viewAnim;
     public GameObject flash;
-    [SerializeField] private TextMeshProUGUI ammoText;
+
+    private PlayerWeaponManager playerWeaponManager;
+
+    public void Awake()
+    {
+        if (player == null) return;
+        playerWeaponManager = player.playerWeaponManager;
+    }
+
+    public void AssignText()
+    {
+        if (player.playerUIManager)
+        {
+            player.playerUIManager.SetAmmo($"{weapon.ammo} / {weapon.maxAmmo}");
+        }
+    }
 
     private void Update()
     {
+        if (playerWeaponManager == null) return;
         weapon = playerWeaponManager.weapon.GetComponent<Gun>();
 
         if (Input.GetKey(KeyCode.Mouse0))
@@ -40,10 +55,8 @@ public class PlayerWeaponController : MonoBehaviour
             weapon.Reload();
         }
 
-        if (ammoText)
-        {
-            ammoText.SetText($"{weapon.ammo} / {weapon.maxAmmo}");
-        }
+        // silly
+        AssignText();
 
         Debug.DrawRay(originPoint.transform.position, originPoint.transform.forward, Color.cyan);
         weapon.GunUpdate();

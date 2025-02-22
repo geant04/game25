@@ -13,13 +13,13 @@ public class Button : MonoBehaviour
     public Player player;
 
     private Vector3 localPosition;
-    private SphereCollider sphereCollider;
-    private bool active;
+    private bool active = true;
+    private bool inRange = false;
 
     public virtual void Activate()
     {
         if (string.IsNullOrEmpty(message)) return;
-        player.GetComponent<PlayerUIManager>().InsertToCenterBox(message, 1.0f);
+        player.playerUIManager.InsertToCenterBox(message, 1.0f);
     }
 
     public virtual void InsertButton(bool BackOrIn)
@@ -29,9 +29,7 @@ public class Button : MonoBehaviour
 
     private void Awake()
     {
-        active = true;
         localPosition = transform.localPosition;
-        sphereCollider = GetComponent<SphereCollider>();
     }
 
     private IEnumerator Reactivate(float waitTime)
@@ -48,21 +46,24 @@ public class Button : MonoBehaviour
             player = player ? player : other.GetComponent<Player>();
             float dot = Vector3.Dot(player.viewAnim.transform.forward, transform.forward);
 
-            if (dot > 0 || !active) return;
+            inRange = !(dot > 0 || !active);
+        }
+    }
 
-            // activate GUI popup code here
-            if (Input.GetKeyDown(keyCode))
-            {
-                Debug.Log("Activated!");
-                Activate();
-                SoundManager.Instance.CreateSound()
-                    .WithSoundData(soundFx)
-                    .WithPosition(transform.position)
-                    .Play();
-                active = false;
-                InsertButton(false);
-                if (isReusable) StartCoroutine(Reactivate(cooldown));
-            }
+    private void Update()
+    {
+        // activate GUI popup code here
+        if (Input.GetKeyDown(keyCode) && inRange)
+        {
+            Debug.Log("Activated!");
+            Activate();
+            SoundManager.Instance.CreateSound()
+                .WithSoundData(soundFx)
+                .WithPosition(transform.position)
+                .Play();
+            active = false;
+            InsertButton(false);
+            if (isReusable) StartCoroutine(Reactivate(cooldown));
         }
     }
 }

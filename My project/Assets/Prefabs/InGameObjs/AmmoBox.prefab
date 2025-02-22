@@ -156,6 +156,7 @@ MonoBehaviour:
   amplitude: 0.15
   frequency: 3
   offset: 0.2
+  message: PICKED UP AMMO
   ammoPickup:
     clip: {fileID: 8300000, guid: 880f50f5ceeb1bf449533488cff4acb1, type: 3}
     mixerGroup: {fileID: 0}

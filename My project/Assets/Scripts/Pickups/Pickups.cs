@@ -10,6 +10,8 @@ public class Pickups : MonoBehaviour
     public float frequency;
     public float offset;
 
+    public string message;
+
     private Vector3 ogPos;
     private float t = 0.0f;
 
@@ -22,6 +24,7 @@ public class Pickups : MonoBehaviour
             PlayerWeaponManager player = collider.transform.GetComponent<PlayerWeaponManager>();
             if (player && BonusPerk(player))
             {
+                player.GetComponent<PlayerUIManager>().InsertToCenterBox(message, 1.0f);
                 Destroy(gameObject);
             }
         }

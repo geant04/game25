@@ -260,7 +260,7 @@ MonoBehaviour:
   keyCode: 102
   message: A DOOR HAS BEEN UNLOCKED
   isReusable: 0
-  inset: 0.2
+  inset: 0.1
   cooldown: 0
   soundFx:
     clip: {fileID: 0}
