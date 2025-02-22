@@ -36,6 +36,11 @@ public class PlayerUIManager : MonoBehaviour
         ammoDisplay.text = text;
     }
 
+    public void SetHP(string text)
+    {
+        hpDisplay.text = text;
+    }
+
     public void InsertToCenterBox(MessageUI message)
     {
         centerBox.InsertPopUp(message);

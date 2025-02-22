@@ -386,9 +386,9 @@ MonoBehaviour:
   myRB: {fileID: 4371990777491331548}
   feet: {fileID: 2221363839684275768}
   viewAnim: {fileID: 551084130474929575}
-  playerController: {fileID: 0}
-  playerWeaponManager: {fileID: 0}
-  playerUIManager: {fileID: 0}
+  playerController: {fileID: 4551538823383746221}
+  playerWeaponManager: {fileID: 4658087763043889856}
+  playerUIManager: {fileID: 3358305109013467627}
   hurtData:
     clip: {fileID: 0}
     mixerGroup: {fileID: 0}

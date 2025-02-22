@@ -87,10 +87,8 @@ public class Player : MonoBehaviour
                 camera.transform.position.z - 0.00000001f);
         }
 
-        if (title)
-        {
-            title.SetText($"{health}");
-        }
+        // spaghetti
+        playerUIManager.SetHP($"{health}");
     }
 
     void FixedUpdate() {
