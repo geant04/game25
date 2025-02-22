@@ -37,7 +37,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Atlas:
-        m_Texture: {fileID: 2800000, guid: 04ae5ac7552eceb4bb86d6437536cd75, type: 3}
+        m_Texture: {fileID: 2800000, guid: a6d3f341940cf8847964596f9ad27f5b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -56,5 +56,6 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _TimeScale: 1
     m_Colors: []
   m_BuildTextureStacks: []
